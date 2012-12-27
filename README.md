@@ -50,3 +50,7 @@ The application also lets you add, edit, and delete movies, as well as see
 details about individual ones. All data-entry scenarios include validation to 
 ensure that the data stored in the database is correct.
 </p>
+
+<p>
+    <img src="https://raw.github.com/paulallies/expressjsintro/master/tutorial/details.png" />
+</p>
