@@ -36,4 +36,6 @@ folder or just rename the layout.jade to layout.hbs and change the syntax.
 You'll implement a simple movie-listing application that supports creating, 
 editing, and listing movies from a database. Below are two screenshots of the 
 application you’ll build. It includes a page that displays a list of movies 
-from a database: <img src="tutorial/MovieList.png" />
+from a database: 
+<br/>
+<img src="https://raw.github.com/paulallies/expressjsintro/master/tutorial/MovieList.png" />
