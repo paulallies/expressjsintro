@@ -1,18 +1,39 @@
-# README for a newly created project.
+This tutorial will teach you the basics of building an nodejs MVC Web application 
+using nodejs and expressjs. 
 
-There are a couple of things you should do first, before you can use all of Git's power:
+Before you start, make sure you've installed the prerequisites listed below. 
 
-  * Add a remote to this project: in the Cloud9 IDE command line, you can execute the following commands
-    `git remote add [remote name] [remote url (eg. 'git@github.com:/ajaxorg/node_chat')]` [Enter]
-  * Create new files inside your project
-  * Add them to to Git by executing the following command
-    `git add [file1, file2, file3, ...]` [Enter]
-  * Create a commit which can be pushed to the remote you just added
-    `git commit -m 'added new files'` [Enter]
-  * Push the commit the remote
-    `git push [remote name] master` [Enter]
+    1. nodejs --> install nodejs http://nodejs.org
+    2. expressjs --> npm install express
+    3. handlebars view engine. --> npm  install hbs
+    4. less --> npm install less-middleware
+    
+After we install all the prerequistes we run the express command to scaffold the 
+application:
 
-That's it! If this doesn't work for you, please visit the excellent resources from [Github.com](http://help.github.com) and the [Pro Git](http://http://progit.org/book/) book.
-If you can't find your answers there, feel free to ask us via Twitter (@cloud9ide), [mailing list](groups.google.com/group/cloud9-ide) or IRC (#cloud9ide on freenode).
+    $express --sessions --css less
+    
+this creates the file/folder structure for our app
+The default view engine which is installed with expressjs is jade so we need to 
+change the view engine to hbs this we do be editting the app.js file and change 
 
-Happy coding!
+    app.set('view engine', 'jade');"    
+        to
+    app.set('view engine', 'hbs');"
+    
+We now run the application and point the browser to the server url and what do 
+we get:  We get a 500 Error: Failed to lookup view "index". So the index view is 
+missing.  Lets look under the views folder and see whats the problem.
+
+We do have an index view but it has a "jade" extension. Of course this was the 
+work of the expressjs scaffolding.  Let's change the extension to hbs to look 
+like "index.hbs".  We must also change the contents of the file to hbs syntax.
+If we want to use a layout/master page we can add a layout.hbs to the views 
+folder or just rename the layout.jade to layout.hbs and change the syntax.
+
+What You'll Build
+
+You'll implement a simple movie-listing application that supports creating, 
+editing, and listing movies from a database. Below are two screenshots of the 
+application you’ll build. It includes a page that displays a list of movies 
+from a database: http://
