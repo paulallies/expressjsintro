@@ -1,4 +1,4 @@
-This tutorial will teach you the basics of building an nodejs MVC Web application 
+This tutorial will teach you the basics of building a nodejs MVC Web application 
 using nodejs and expressjs. 
 
 Before you start, make sure you've installed the prerequisites listed below. 
@@ -13,7 +13,7 @@ application:
 
     $express --sessions --css less
     
-this creates the file/folder structure for our app
+This creates the file/folder structure for our app
 The default view engine which is installed with expressjs is jade so we need to 
 change the view engine to hbs this we do be editting the app.js file and change 
 
@@ -31,9 +31,9 @@ like "index.hbs".  We must also change the contents of the file to hbs syntax.
 If we want to use a layout/master page we can add a layout.hbs to the views 
 folder or just rename the layout.jade to layout.hbs and change the syntax.
 
-What You'll Build
+<h3>What You'll Build</h3>
 
 You'll implement a simple movie-listing application that supports creating, 
 editing, and listing movies from a database. Below are two screenshots of the 
 application you’ll build. It includes a page that displays a list of movies 
-from a database: http://
+from a database: <img src="tutorial/MovieList.png" />
