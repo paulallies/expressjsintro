@@ -52,5 +52,5 @@ ensure that the data stored in the database is correct.
 </p>
 
 <p>
-    <img src="https://raw.github.com/paulallies/expressjsintro/master/tutorial/details.png" />
+    <img src="https://raw.github.com/paulallies/expressjsintro/master/tutorial/Details.png" />
 </p>
