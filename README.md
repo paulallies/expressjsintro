@@ -103,5 +103,13 @@ change the view engine to hbs this we do be editting the app.js file and change
 <p>
     <img src="https://raw.github.com/paulallies/expressjsintro/master/tutorial/JadeError.PNG" />
 </p>
-        
+
+<p>
+    We receive this error because the jade view engine is not installed within 
+    the application.  I like the <a href="http://handlebarsjs.com/" target="_blank">handlebars</a> 
+    view engine so lets install and register handlebars as our view engine for the application.
+</p>    
+<code>
+    $ npm install hbs
+<code>
 
