@@ -21,24 +21,24 @@ change the view engine to hbs this we do be editting the app.js file and change
         to
     app.set('view engine', 'hbs');"
 <p>    
-We now run the application and point the browser to the server url and what do 
-we get:  We get a 500 Error: Failed to lookup view "index". So the index view is 
-missing.  Lets look under the views folder and see whats the problem.
+    We now run the application and point the browser to the server url and what do 
+    we get:  We get a 500 Error: Failed to lookup view "index". So the index view is 
+    missing.  Lets look under the views folder and see whats the problem.
 </p>
 <p>
-We do have an index view but it has a "jade" extension. Of course this was the 
-work of the expressjs scaffolding.  Let's change the extension to hbs to look 
-like "index.hbs".  We must also change the contents of the file to hbs syntax.
-If we want to use a layout/master page we can add a layout.hbs to the views 
-folder or just rename the layout.jade to layout.hbs and change the syntax.
+    We do have an index view but it has a "jade" extension. Of course this was the 
+    work of the expressjs scaffolding.  Let's change the extension to hbs to look 
+    like "index.hbs".  We must also change the contents of the file to hbs syntax.
+    If we want to use a layout/master page we can add a layout.hbs to the views 
+    folder or just rename the layout.jade to layout.hbs and change the syntax.
 </p>
 <h3>What You'll Build</h3>
 
 <p>
-You'll implement a simple movie-listing application that supports creating, 
-editing, and listing movies from a database. Below are two screenshots of the 
-application you’ll build. It includes a page that displays a list of movies 
-from a database: 
+    You'll implement a simple movie-listing application that supports creating, 
+    editing, and listing movies from a database. Below are two screenshots of the 
+    application you’ll build. It includes a page that displays a list of movies 
+    from a database: 
 </p>
 
 <p>
@@ -46,9 +46,9 @@ from a database:
 </p>
 
 <p>
-The application also lets you add, edit, and delete movies, as well as see 
-details about individual ones. All data-entry scenarios include validation to 
-ensure that the data stored in the database is correct.
+    The application also lets you add, edit, and delete movies, as well as see 
+    details about individual ones. All data-entry scenarios include validation to 
+    ensure that the data stored in the database is correct.
 </p>
 
 <p>
