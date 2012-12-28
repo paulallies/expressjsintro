@@ -111,13 +111,14 @@ change the view engine to hbs this we do be editting the app.js file and change
 </p>    
 <code>
     $ npm install hbs
-<code>
+</code>
 <p>
     We need to register hbs as our view engine. So we alter the app.js file change
     <pre>
-        app.set('view engine', 'jade');   
-            to
-        app.set('view engine', 'hbs');
+    app.set('view engine', 'jade');   
+        to
+    app.set('view engine', 'hbs');
     </pre>
+</p>
     
 
