@@ -77,7 +77,7 @@ change the view engine to hbs this we do be editting the app.js file and change
     
         <ol>
             <li>$ mkdir tutorial</li>
-            <li>$ cd tutorial<li>
+            <li>$ cd tutorial</li>
             <li>$ npm install express</li>
         </ol>
 </p>
@@ -85,15 +85,19 @@ change the view engine to hbs this we do be editting the app.js file and change
 <p>
     After installing express we can generate the skeleton of our site with the 
     following command:
-    
+    <br/>
+    <code>
         $ ./node_modules/express/bin/express
-        
+    </code>
+    <br/>
     When prompted "destination is not empty, continue?" answer with "y".
     Files and folders are then created within the project folder and you can run 
     the web application:
-    
+    <br/>
+    <code>
         $ node app.js
-        
+    </code>
+    <br/>
     We then recieve the following error:
 </p>
 <p>
