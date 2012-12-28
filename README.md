@@ -123,7 +123,7 @@ change the view engine to hbs this we do be editting the app.js file and change
 </p>
 
 <p>
-<img src="https://raw.github.com/paulallies/expressjsintro/master/tutorial/ExpressError.PNG" />
+<img src="https://raw.github.com/paulallies/expressjsintro/master/tutorial/ExpressError.png" />
 </p>
     
 
