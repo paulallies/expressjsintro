@@ -119,6 +119,11 @@ change the view engine to hbs this we do be editting the app.js file and change
         to
     app.set('view engine', 'hbs');
     </pre>
+    We now receive this error:
+</p>
+
+<p>
+<img src="https://raw.github.com/paulallies/expressjsintro/master/tutorial/ExpressError.PNG" />
 </p>
     
 
