@@ -71,7 +71,33 @@ change the view engine to hbs this we do be editting the app.js file and change
 
 <h3>Creating Your First Application</h3>
 <p>
-    Our application will be an express based application. <a href="http://expressjs.com">Express</a> 
-    is a MVC web application framework for <a href="http://nodejs.org">nodejs</a>.
+    Our application will be an express based application. <a href="http://expressjs.com" target="_blank">Express</a> 
+    is a MVC web application framework for <a href="http://nodejs.org" target="_blank">nodejs</a>.
+    Let's start: 
+    
+        <ol>
+            <li>$ mkdir tutorial</li>
+            <li>$ cd tutorial<li>
+            <li>$ npm install express</li>
+        </ol>
 </p>
+
+<p>
+    After installing express we can generate the skeleton of our site with the 
+    following command:
+    
+        $ ./node_modules/express/bin/express
+        
+    When prompted "destination is not empty, continue?" answer with "y".
+    Files and folders are then created within the project folder and you can run 
+    the web application:
+    
+        $ node app.js
+        
+    We then recieve the following error:
+</p>
+<p>
+    <img src="https://raw.github.com/paulallies/expressjsintro/master/tutorial/JadeError.PNG" />
+</p>
+        
 
