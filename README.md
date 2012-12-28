@@ -68,3 +68,10 @@ change the view engine to hbs this we do be editting the app.js file and change
         <li>How to edit data and enable data validation.</li>
     </ul>
 </p>
+
+<h3>Creating Your First Application</h3>
+<p>
+    Our application will be an express based application. <a href="http://expressjs.com">Express</a> 
+    is a MVC web application framework for <a href="http://nodejs.org">nodejs</a>.
+</p>
+
