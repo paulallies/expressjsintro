@@ -54,3 +54,17 @@ ensure that the data stored in the database is correct.
 <p>
     <img src="https://raw.github.com/paulallies/expressjsintro/master/tutorial/Details.png" />
 </p>
+
+<h3>Skills you will learn</h3>
+
+<p>
+    Here's what you'll learn:
+
+    <ul>
+        <li>How to create a new express project.</li>
+        <li>How to create routes and views.</li>
+        <li>How to create a new database using the MongoDB and Mongoose.</li>
+        <li>How to retrieve and display data.</li>
+        <li>How to edit data and enable data validation.</li>
+    </ul>
+</p>
