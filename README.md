@@ -125,5 +125,12 @@ change the view engine to hbs this we do be editting the app.js file and change
 <p>
 <img src="https://raw.github.com/paulallies/expressjsintro/master/tutorial/ExpressError.png" />
 </p>
+
+<p>
+    We must add a layout and index view. The existing jade index and layout views will be these
+    <a href="https://raw.github.com/paulallies/expressjsintro/master/views/index.hbs">index.hbs</a>
+    and 
+    <a href="https://raw.github.com/paulallies/expressjsintro/master/views/layout.hbs">layout.hbs</a>
+</p>
     
 
