@@ -128,9 +128,16 @@ change the view engine to hbs this we do be editting the app.js file and change
 
 <p>
     We must add a layout and index view. The existing jade index and layout views will be these
-    <a href="https://raw.github.com/paulallies/expressjsintro/master/views/index.hbs">index.hbs</a>
+    <a href="https://raw.github.com/paulallies/expressjsintro/master/views/index.hbs" target="_blank">index.hbs</a>
     and 
-    <a href="https://raw.github.com/paulallies/expressjsintro/master/views/layout.hbs">layout.hbs</a>
+    <a href="https://raw.github.com/paulallies/expressjsintro/master/views/layout.hbs" target="_blank">layout.hbs</a>
 </p>
-    
+
+<p>
+    With all the correct css and js in place we now should git the following screen:
+</p>
+
+<p>
+    <img src="https://raw.github.com/paulallies/expressjsintro/master/tutorial/Home.PNG" />
+</p>
 
