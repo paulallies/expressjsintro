@@ -1,0 +1,50 @@
+<h2>Create a New Account</h2>
+<p>
+    Use the form below to create a new account. 
+</p>
+<p>
+    Passwords are required to be a minimum of 6 characters in length.
+</p>
+
+<form action="/Account/Register" method="post">    <div>
+        <fieldset>
+            <legend>Account Information</legend>
+
+            <div class="editor-label">
+                <label for="UserName">User name</label>
+            </div>
+            <div class="editor-field">
+                <input data-val="true" data-val-required="The User name field is required." id="UserName" name="UserName" type="text" value="" />
+                <span class="field-validation-valid" data-valmsg-for="UserName" data-valmsg-replace="true"></span>
+            </div>
+
+            <div class="editor-label">
+                <label for="Email">Email address</label>
+            </div>
+            <div class="editor-field">
+                <input data-val="true" data-val-required="The Email address field is required." id="Email" name="Email" type="text" value="" />
+                <span class="field-validation-valid" data-valmsg-for="Email" data-valmsg-replace="true"></span>
+            </div>
+
+            <div class="editor-label">
+                <label for="Password">Password</label>
+            </div>
+            <div class="editor-field">
+                <input data-val="true" data-val-length="The Password must be at least 6 characters long." data-val-length-max="100" data-val-length-min="6" data-val-required="The Password field is required." id="Password" name="Password" type="password" />
+                <span class="field-validation-valid" data-valmsg-for="Password" data-valmsg-replace="true"></span>
+            </div>
+
+            <div class="editor-label">
+                <label for="ConfirmPassword">Confirm password</label>
+            </div>
+            <div class="editor-field">
+                <input data-val="true" data-val-equalto="The password and confirmation password do not match." data-val-equalto-other="*.Password" id="ConfirmPassword" name="ConfirmPassword" type="password" />
+                <span class="field-validation-valid" data-valmsg-for="ConfirmPassword" data-valmsg-replace="true"></span>
+            </div>
+
+            <p>
+                <input type="submit" value="Register" />
+            </p>
+        </fieldset>
+    </div>
+</form>

@@ -1,0 +1,39 @@
+
+<h2>Log On</h2>
+<p>
+    Please enter your user name and password. <a href="/Account/Register">Register</a> if you don't have an account.
+</p>
+
+
+<form action="/Account/LogOn" method="post">    <div>
+        <fieldset>
+            <legend>Account Information</legend>
+
+            <div class="editor-label">
+                <label for="UserName">User name</label>
+            </div>
+            <div class="editor-field">
+                <input data-val="true" data-val-required="The User name field is required." id="UserName" name="UserName" type="text" value="" />
+                <span class="field-validation-valid" data-valmsg-for="UserName" data-valmsg-replace="true"></span>
+            </div>
+
+            <div class="editor-label">
+                <label for="Password">Password</label>
+            </div>
+            <div class="editor-field">
+                <input data-val="true" data-val-required="The Password field is required." id="Password" name="Password" type="password" />
+                <span class="field-validation-valid" data-valmsg-for="Password" data-valmsg-replace="true"></span>
+            </div>
+
+            <div class="editor-label">
+                <input data-val="true" data-val-required="The Remember me? field is required." id="RememberMe" name="RememberMe" type="checkbox" value="true" /><input name="RememberMe" type="hidden" value="false" />
+                <label for="RememberMe">Remember me?</label>
+            </div>
+
+            <p>
+                <input type="submit" value="Log On" />
+            </p>
+        </fieldset>
+    </div>
+</form>
+

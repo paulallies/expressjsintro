@@ -1,12 +1,9 @@
+var homeRoutes = require('./home')
+  , accountRoutes = require('./account');
 
-/*
- * GET home page.
- */
-
-exports.index = function(req, res){
-    res.render('index', { 
-        title: 'My Movie List',
-        message: 'Welcome to Express!'
-      
-    });
-};
+exports.registerRoutes = function(app){
+    app.get('/', homeRoutes.index);
+    app.get('/home/about', homeRoutes.about);
+    app.get('/account/logon', accountRoutes.logon);
+    app.get('/account/register', accountRoutes.register);
+}
