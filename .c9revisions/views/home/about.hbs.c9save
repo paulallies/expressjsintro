@@ -1,5 +1,0 @@
-{"ts":1356368107109,"silentsave":true,"restoring":false,"patch":[[{"diffs":[[1,"extends layout\n\nblock content\n  h1= title\n  p Welcome to #{title}"]],"start1":0,"start2":0,"length1":0,"length2":65}]],"length":65}
-{"contributors":[],"silentsave":false,"ts":1356370292748,"patch":[[{"diffs":[[-1,"extends layout\n\nblock content\n  h1= title\n  p Welcome to #{title}"],[1,"<h2>Testing .NET 4</h2>\r\n<p>\r\n    Testing...\r\n</p>"]],"start1":0,"start2":0,"length1":65,"length2":50}]],"length":50,"saved":false}
-{"contributors":[],"silentsave":false,"ts":1356370787361,"patch":[[{"diffs":[[0,"    "],[-1,"Testing..."],[1,"{{message}}"],[0,"\r\n</"]],"start1":30,"start2":30,"length1":18,"length2":19}]],"length":51,"saved":false}
-{"contributors":[],"silentsave":false,"ts":1356621909069,"patch":[[{"diffs":[[0,"<h2>"],[-1,"Testing .NET 4"],[1,"My Movie List"],[0,"</h2"]],"start1":0,"start2":0,"length1":22,"length2":21}]],"length":50,"saved":false}
-{"contributors":[],"silentsave":false,"ts":1356782161324,"patch":[[{"diffs":[[0,"<h2>"],[-1,"My Movie Lis"],[1,"Abou"],[0,"t</h"]],"start1":0,"start2":0,"length1":20,"length2":12}]],"length":42,"saved":false}

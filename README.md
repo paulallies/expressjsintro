@@ -81,6 +81,6 @@
     how to use them to build an application.
 </p>
 <p>
-    Let's begin by creating a route module. Create a new folder within the routes 
-    folder.
+    Let's begin by creating a route module. Create a new file within the routes 
+    folder.  Name your new file "helloworld.js"
 </p>
