@@ -8,4 +8,5 @@ exports.registerRoutes = function(app){
     app.get('/account/logon', accountRoutes.logon);
     app.get('/account/register', accountRoutes.register);
     app.get('/helloworld', helloworldRoutes.index);
+    app.get('/helloworld/welcome', helloworldRoutes.welcome);
 }

@@ -93,4 +93,9 @@
         res.send("This is the Welcome action method...");
     };
 </pre>
-
+<p>
+    Your route module is named helloworld and the first method above is named index. Let’s invoke it from a browser. Run the application (node app.js). In the browser, append "helloworld" to the path in the address bar. (For example, in the illustration below, it's http://localhost:3000/helloworld.) The page in the browser will look like the following screenshot. In the function above, the code returned a string directly. You told the system to just return some HTML, and it did!
+</p>
+<p>
+    <img src="https://raw.github.com/paulallies/expressjsintro/master/tutorial/helloworld.png" />
+</p>
