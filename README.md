@@ -84,8 +84,6 @@
     Let's begin by creating a route module. Create a new file within the routes 
     folder.  Name your new file "helloworld.js".  Inside the file helloworld.js, 
     create two functions that look like the following code.
-</p>
-
 <code>
     exports.index = function(req, res){
         res.send("This is my <b>default</b> action...");
@@ -94,3 +92,4 @@
         res.send("This is the Welcome action method...");
     };
 </code>
+</p>
