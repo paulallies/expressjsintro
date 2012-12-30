@@ -85,12 +85,12 @@
     folder.  Name your new file "helloworld.js".  Inside the file helloworld.js, 
     create two functions that look like the following code.
 </p>
-<code>
+<pre>
     exports.index = function(req, res){
         res.send("This is my default action...");
     };
     exports.welcome = function(req, res){
         res.send("This is the Welcome action method...");
     };
-</code>
+</pre>
 
