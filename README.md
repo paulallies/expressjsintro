@@ -106,8 +106,8 @@
         app.get('/home/about', homeRoutes.about);
         app.get('/account/logon', accountRoutes.logon);
         app.get('/account/register', accountRoutes.register);
-        app.get('/helloworld', helloworldRoutes.index);
-        app.get('/helloworld/welcome', helloworldRoutes.welcome);
+        <b>app.get('/helloworld', helloworldRoutes.index);
+        app.get('/helloworld/welcome', helloworldRoutes.welcome);</b>
     }
 </pre>
 <p>
