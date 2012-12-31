@@ -116,3 +116,11 @@
 <p>
     <img src="https://raw.github.com/paulallies/expressjsintro/master/tutorial/helloworld.png" />
 </p>
+
+<p>
+    Browse to http://localhost:xxxx/HelloWorld/Welcome. The Welcome method runs and returns the string "This is the Welcome action method...".
+</p>
+
+<p>
+    <img src="https://raw.github.com/paulallies/expressjsintro/master/tutorial/welcome.png" />
+</p>
