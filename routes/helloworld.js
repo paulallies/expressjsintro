@@ -3,7 +3,5 @@ exports.index = function(req, res){
 };
 
 exports.welcome = function(req, res){
-	var name = req.query.name,
-		numtimes = req.query.numtimes;
-    res.send("Hello " + name + ", NumTimes is: " + numtimes);
+    res.send("This is the Welcome action method...");
 };
