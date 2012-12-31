@@ -131,7 +131,12 @@
 
 <pre>
     exports.welcome = function(req, res){
-        
-        res.send("This is the Welcome action method...");
+        var name = req.query.name,
+            numtimes = req.query.numtimes;
+        res.send("Hello " + name + ", NumTimes is: " + numtimes);
     };
 </pre>
+
+<p>
+    Run your application and browse to the example URL (http://localhost:3000/helloworld/welcome?name=Scott&numtimes=4). You can try different values for name and numtimes in the URL. The system automatically maps the named parameters from the query string in the address bar to parameters in your method.
+</p>    
