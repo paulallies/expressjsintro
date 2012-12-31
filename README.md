@@ -118,9 +118,20 @@
 </p>
 
 <p>
-    Browse to http://localhost:xxxx/HelloWorld/Welcome. The Welcome method runs and returns the string "This is the Welcome action method...".
+    Browse to http://localhost:3000/helloworld/welcome. The Welcome method runs and returns the string "This is the Welcome action method...".
 </p>
 
 <p>
     <img src="https://raw.github.com/paulallies/expressjsintro/master/tutorial/welcome.png" />
 </p>
+
+<p>
+    Let's modify the example slightly so that you can pass some parameter information from the URL to the route (for example, /helloworld/welcome?name=Scott&numtimes=4). Change your Welcome function to include two parameters as shown below.
+</p>
+
+<pre>
+    exports.welcome = function(req, res){
+        
+        res.send("This is the Welcome action method...");
+    };
+</pre>
