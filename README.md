@@ -144,3 +144,8 @@
 <p>
 <img src="https://raw.github.com/paulallies/expressjsintro/master/tutorial/welcomewithquery.png" />
 </p>  
+<p>
+In both these examples the router has been doing the "VC" portion of MVC — that is, the view and controller work. The controller is returning HTML directly. Ordinarily you don't want controllers returning HTML directly, since that becomes very cumbersome to code. Instead we'll typically use a separate view template file to help generate the HTML response. Let's look next at how we can do this.
+</p>
+
+
