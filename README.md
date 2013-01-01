@@ -163,9 +163,9 @@ Start by using a view template with the Index method in the helloworld router mo
     Notice that when we want to return a view we use the response function render instead of send.  The views to be rendered are located under the views folder. Add the folder "helloworld" under the views folder.  This folder would contain all the helloworld related views. Then add a new file called "index.hbs" for the view with the following code:
 
 </p>
-'''html
+
 <h2>Hello World Index Page</h2>
-'''
+
 <p>
     Run the application and browse to the HelloWorld controller (http://localhost:3000/HelloWorld). The Index method in your router didn't do much work; it simply ran the statement res.render("/helloworld/index"), which specified that the method should use a view template file to render a response to the browser. The image below shows the rendered view.
 </p>
