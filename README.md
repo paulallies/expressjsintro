@@ -166,8 +166,11 @@ Start by using a view template with the Index method in the helloworld router mo
 
     
         <h2>Hello World Index Page</h2>
-    
+
 <p>
     Run the application and browse to the HelloWorld controller (http://localhost:3000/HelloWorld). The Index method in your router didn't do much work; it simply ran the statement res.render("/helloworld/index"), which specified that the method should use a view template file to render a response to the browser. The image below shows the rendered view.
+</p>
+<p>
+    <img src="https://raw.github.com/paulallies/expressjsintro/master/tutorial/helloworldview.png" />
 </p>
 
