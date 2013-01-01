@@ -199,39 +199,37 @@ Run the application and notice that it now says "Express Movie App". Click the A
     The complete layout.hbs file is shown below:
 </p>
 
-<pre>
-<!doctype html>
-<html>
-    <head>
-        <title>{{title}} - Express Movie App</title>
-        <link href="/images/favicon.ico" rel="Shortcut Icon" type="image/x-icon">
-        <link rel='stylesheet' href='/stylesheets/style.css' />  
-        <script src="/javascripts/modernizr-1.7.min.js"></script>
-    </head>
-  <body>
-    <div class="page">
-        <header>
-            <div id="title">
-                <h1>Express Movie App</h1>
-            </div>
-            <div id="logindisplay">
-                    [ <a href="/Account/LogOn">Log On</a> ]
+        <!doctype html>
+        <html>
+            <head>
+                <title>{{title}} - Express Movie App</title>
+                <link href="/images/favicon.ico" rel="Shortcut Icon" type="image/x-icon">
+                <link rel='stylesheet' href='/stylesheets/style.css' />  
+                <script src="/javascripts/modernizr-1.7.min.js"></script>
+            </head>
+          <body>
+            <div class="page">
+                <header>
+                    <div id="title">
+                        <h1>Express Movie App</h1>
+                    </div>
+                    <div id="logindisplay">
+                            [ <a href="/Account/LogOn">Log On</a> ]
 
+                    </div>
+                    <nav>
+                        <ul id="menu">
+                            <li><a href="/">Home</a></li>
+                            <li><a href="/Home/About">About</a></li>
+                        </ul>
+                    </nav>
+                </header>
+                <section id="main">
+                    {{{body}}}
+                </section>
+                <footer>
+                </footer>
             </div>
-            <nav>
-                <ul id="menu">
-                    <li><a href="/">Home</a></li>
-                    <li><a href="/Home/About">About</a></li>
-                </ul>
-            </nav>
-        </header>
-        <section id="main">
-            {{{body}}}
-        </section>
-        <footer>
-        </footer>
-    </div>
 
-  </body>
-</html>
-</pre>
+          </body>
+        </html>
