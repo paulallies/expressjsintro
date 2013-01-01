@@ -161,12 +161,9 @@ Start by using a view template with the Index method in the helloworld router mo
 
 <p>
     Notice that when we want to return a view we use the response function render instead of send.  The views to be rendered are located under the views folder. Add the folder "helloworld" under the views folder.  This folder would contain all the helloworld related views. Then add a new file called "index.hbs" for the view with the following code:
-    <pre>
-        
-    </pre>
 
 </p>
-<pre lang="html"><code>
+<pre lang="javascript"><code>
 <h2>Hello World Index Page</h2>;
 </code></pre>
 <p>
