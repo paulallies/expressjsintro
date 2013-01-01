@@ -1,5 +1,5 @@
 exports.index = function(req, res){
-    res.send("This is my <b>default</b> action...");
+    res.render("helloworld/index");
 };
 
 exports.welcome = function(req, res){
