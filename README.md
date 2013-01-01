@@ -175,3 +175,23 @@ Start by using a view template with the Index method in the helloworld router mo
     <img src="https://raw.github.com/paulallies/expressjsintro/master/tutorial/helloworldview.png" />
 </p>
 
+<p>
+Looks pretty good. However, notice that the big title on the page says "My MVC Application." Let's change those.
+</p>
+
+<h3>Changing Views and Layout Pages</h3>
+
+<p>
+    First, you want to change the "My Express Application" title at the top of the page. That text is common to every page. It actually is implemented in only one place in the project, even though it appears on every page in the application. Go to the /Views open the layout.hbs file. This file is called a layout page and it's the shared "shell" that all other pages use.  Layout templates allow you to specify the HTML container layout of your site in one place and then apply it across multiple pages in your site. Note the {{{body}}} line near the bottom of the file. {{{body}}} is a placeholder where all the view-specific pages you create show up, "wrapped" in the layout page. Change the title heading in the layout template from "My Express Application" to "Express Movie App".
+</p>
+
+        <div id="title">
+            <h1>Express Movie App</h1>
+        </div>
+<p>
+Run the application and notice that it now says "Express Movie App". Click the About link, and you see how that page shows "MVC Movie App", too. We were able to make the change once in the layout template and have all pages on the site reflect the new title.
+</p>
+
+<p>
+    <img src="https://raw.github.com/paulallies/expressjsintro/master/tutorial/about.png" />
+</p>
