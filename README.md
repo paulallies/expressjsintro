@@ -188,6 +188,7 @@ Looks pretty good. However, notice that the big title on the page says "My MVC A
         <div id="title">
             <h1>Express Movie App</h1>
         </div>
+
 <p>
 Run the application and notice that it now says "Express Movie App". Click the About link, and you see how that page shows "MVC Movie App", too. We were able to make the change once in the layout template and have all pages on the site reflect the new title.
 </p>
@@ -215,7 +216,6 @@ Run the application and notice that it now says "Express Movie App". Click the A
                     </div>
                     <div id="logindisplay">
                             [ <a href="/Account/LogOn">Log On</a> ]
-
                     </div>
                     <nav>
                         <ul id="menu">
@@ -230,6 +230,32 @@ Run the application and notice that it now says "Express Movie App". Click the A
                 <footer>
                 </footer>
             </div>
-
           </body>
         </html>
+
+<h3>Passing Data from the Route to the View</h3>
+<p>
+    Before we go to a database and talk about models, though, let's first talk about passing information from the route to a view. Routers are invoked in response to an incoming URL request. A router is where you write the code that handles the incoming parameters, retrieves data from a database, and ultimately decides what type of response to send back to the browser. View templates can then be used from a router to generate and format an HTML response to the browser.
+
+    routers are responsible for providing whatever data or objects are required in order for a view template to render a response to the browser. A view template should never perform business logic or interact with a database directly. Instead, it should work only with the data that's provided to it by the router. Maintaining this "separation of concerns" helps keep your code clean and more maintainable.
+
+    Currently, the "welcome" function in the helloworld router takes a name and a numTimes parameter and then outputs the values directly to the browser. Rather than have the route render this response as a string, let’s change the route to use a view template instead. The view template will generate a dynamic response, which means that you need to pass appropriate bits of data from the route to the view in order to generate the response. You can do this by having the route put the dynamic data that the view template needs in a object that the view template can then access.
+
+    Return to the helloworld.js route file and change the welcome method to pass a messageCollection to the view.  We fill the messageCollection with a list of objects.
+</p>
+
+
+        exports.welcome = function(req, res){
+            var name = req.query.name,
+                numTimes = req.query.numtimes,
+                messageCollection = [];
+
+            for(var i = 0; i < numTimes; i++){
+                messageCollection.push({message: "Hello "+ name});
+            }
+
+            res.render('helloworld/welcome', { 
+                messageCollection: messageCollection
+            });
+        };
+
