@@ -276,3 +276,7 @@ Run the application and notice that it now says "Express Movie App". Click the A
 
     Now data is taken from the URL and passed to the route automatically. The route packages the data passes that object to the view. The view then displays the data as HTML to the user.
 </p>
+
+<p>
+    <img src="https://raw.github.com/paulallies/expressjsintro/master/tutorial/helloworldview1.png" />
+</p>
