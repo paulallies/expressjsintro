@@ -270,13 +270,22 @@ Run the application and notice that it now says "Express Movie App". Click the A
     </ul>
 
 <p>
-    Run the application and browse to the following URL:
-
-    http://localhost:3000/HelloWorld/Welcome?name=Scott&numtimes=4
-
-    Now data is taken from the URL and passed to the route automatically. The route packages the data passes that object to the view. The view then displays the data as HTML to the user.
+    Run the application and browse to the following URL: http://localhost:3000/HelloWorld/Welcome?name=Scott&numtimes=4.  Now data is taken from the URL and passed to the route automatically. The route packages the data passes that object to the view. The view then displays the data as HTML to the user.
 </p>
 
 <p>
     <img src="https://raw.github.com/paulallies/expressjsintro/master/tutorial/helloworldview1.png" />
 </p>
+
+<h3>Adding a Model</h3>
+<p>
+    In this section you'll add some code for managing movies in a database. This will be the "model" part of the application.
+
+    You’ll use a nodejs data-access technology known as the mongoose framework to define and work with these model classes. The mongoose framework allows you to create model objects by writing simple classes.  You can then have the database created on the fly from your classes, which enables a very clean and rapid development workflow communication to a mongodb database.
+</p>
+
+<p>
+    
+</p>
+
+
