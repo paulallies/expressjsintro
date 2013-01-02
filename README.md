@@ -258,4 +258,21 @@ Run the application and notice that it now says "Express Movie App". Click the A
                 messageCollection: messageCollection
             });
         };
+<p>
+    The view then iterates through the collection to build a list.
+</p>
 
+    <h2>Welcome</h2>
+        <ul> 
+            {{#each messageCollection}}
+                <li>{{message}}</li> 
+            {{/each}}
+    </ul>
+
+<p>
+    Run the application and browse to the following URL:
+
+    http://localhost:3000/HelloWorld/Welcome?name=Scott&numtimes=4
+
+    Now data is taken from the URL and passed to the route automatically. The route packages the data passes that object to the view. The view then displays the data as HTML to the user.
+</p>
