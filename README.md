@@ -406,7 +406,7 @@ Run the application and notice that it now says "Express Movie App". Click the A
     Run the application and browse to the movies route by appending /movies to the URL in the address bar of your browser. Because the application is relying on the default routing (defined in the Global.asax file), the browser request http://localhost:xxxxx/Movies is routed to the default Index action method of the Movies controller. In other words, the browser request http://localhost:xxxxx/Movies is effectively the same as the browser request http://localhost:xxxxx/Movies/Index. The result is an empty list of movies, because you haven't added any yet.
 </p>
 <p>
-    <img src="https://raw.github.com/paulallies/expressjsintro/master/tutorial/movie.png" />
+    <img src="https://raw.github.com/paulallies/expressjsintro/master/tutorial/movielistempty.png" />
 </p>
 
 
