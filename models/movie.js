@@ -7,8 +7,8 @@ function validator (val) {
 }
 
 module.exports = {
-        title : { type: String, validate: validator },
-        releasedate : { type: Date, validate : validator},
-        genre : { type : String, default : ""},
-        price : { type: Number, default: 0.00}
+        title : { type: String},
+        releasedate : { type: Date},
+        genre : { type : String},
+        price : { type: Number}
 };

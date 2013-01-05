@@ -1,13 +1,14 @@
 var movieRepository = require("../models/movierepository");
 
 exports.index = function(req, res){
-    res.render("movie/index",{
-    	movies : movieRepository.getAllMovies()
-    });
+	movieRepository.getAll(function(result){
+		res.render("movie/index",{
+    		movies : result
+    	});	
+	});   
 };
 
-exports.add = function(req, res){
 
-};
+
 
 

@@ -295,5 +295,73 @@ Run the application and notice that it now says "Express Movie App". Click the A
             genre : { type : String},
             price : { type: Number}
     };
+<p>
+    We also create a repository file to store all our movie operation methods like getAll and create 
+</p>
+    var mongoose = require("mongoose");
+    mongoose.connect('mongodb://sa:sa@ds047207.mongolab.com:47207/movies');
+    var schema = mongoose.Schema(require("./movie"));
+    var Movie = mongoose.model('Movie', schema);
+    
+    exports.getAll = function(cb){
+        Movie.find(
+            function(err, docs) {
+                if (!err){ 
+                    var movieList = [];
+                    for(var d in docs)
+                    {
+                        movieList.push({
+                            title : docs[d].title,
+                            releasedate : docs[d].releasedate,
+                            genre : docs[d].genre,
+                            price : docs[d].price
+                        });
+                    }
+                    cb(movieList);
+                    mongoose.disconnect();
+                }
+                else { 
+                    throw err;
+                }
+            }
+        );  
+    }
 
+    exports.create = function(movie, cb){
+
+        var newMovie = new Movie({ 
+            title: movie.title,  
+            releasedate : movie.releasedate,
+            genre : movie.genre,
+            price : movie.price
+        });
+
+        newMovie.save(function (err) {
+            if (err) {
+                cb(err);
+            }else{
+                cb();
+            }
+            mongoose.disconnect();
+        });
+
+    }
+
+<p>
+    This file has a lot of important stuff that needs to be explained.  In the repository file we store all the methods that will be used by the routes.  We don't want to store database specific code. So to display a list of movies we would call the "getAll" function from the route and to create a movie we would call the "crate" function. Note the connection to the database and reference to the movie model in the second and third lines of the repository file.
+</p>
+
+<p>
+    Next, you'll build a new movie routes module that your can use to display the movie data and allow users to create new movie listings.  Let's look at the first function of the movie route.  Create a file named movie.js under the routes folder and add the following code:
+</p>
+
+    var movieRepository = require("../models/movierepository");
+
+    exports.index = function(req, res){
+        movieRepository.getAll(function(result){
+            res.render("movie/index",{
+                movies : result
+            }); 
+        });   
+    };
 
