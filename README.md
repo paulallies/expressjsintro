@@ -348,7 +348,7 @@ Run the application and notice that it now says "Express Movie App". Click the A
     }
 
 <p>
-    This file has a lot of important stuff that needs to be explained.  In the repository file we store all the methods that will be used by the routes.  We don't want to store database specific code. So to display a list of movies we would call the "getAll" function from the route and to create a movie we would call the "crate" function. Note the connection to the database and reference to the movie model in the second and third lines of the repository file.
+    This file has a lot of important stuff that needs to be explained.  In the repository file we store all the methods that will be used by the routes.  We don't want to store database specific code in the route. So to display a list of movies we would call the "getAll" function and to create a movie we would call the "create" function. Note the connection to the database and reference to the movie model in the second and third lines of the repository file.
 </p>
 
 <p>
