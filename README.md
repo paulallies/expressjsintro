@@ -421,7 +421,7 @@ Run the application and notice that it now says "Express Movie App". Click the A
                 <legend>Create Movie</legend>
 
                 <div class="editor-label">
-                    <label for="title">Title name</label>
+                    <label for="title">Title</label>
                 </div>
                 <div class="editor-field">
                     <input id="title" name="title" type="text"/>
