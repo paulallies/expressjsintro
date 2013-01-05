@@ -411,4 +411,48 @@ Run the application and notice that it now says "Express Movie App". Click the A
     <img src="https://raw.github.com/paulallies/expressjsintro/master/tutorial/movielistempty.png" />
 </p>
 
+<p>
+    To add some movies to the database we need a create view.  Create a new file under the movie view folder and call it create.hbs.  The file will have the following html
+</p>
+
+    <form action="/movie/create" method="post">    
+        <div>
+            <fieldset>
+                <legend>Create Movie</legend>
+
+                <div class="editor-label">
+                    <label for="title">Title name</label>
+                </div>
+                <div class="editor-field">
+                    <input id="title" name="title" type="text"/>
+                </div>
+
+                <div class="editor-label">
+                    <label for="releasedate">Release Date</label>
+                </div>
+                <div class="editor-field">
+                    <input id="releasedate" name="releasedate" type="text" />
+                </div>
+
+                <div class="editor-label">
+                    <label for="genre">Genre</label>
+                </div>
+                <div class="editor-field">
+                    <input id="genre" name="genre" type="text" />
+                </div>
+
+                <div class="editor-label">
+                    <label for="price">Price</label>
+                </div>
+                <div class="editor-field">
+                    <input id="price" name="price" type="text" />
+                </div>
+
+                <p>
+                    <input type="submit" value="Create" />
+                </p>
+            </fieldset>
+        </div>
+    </form>
+
 

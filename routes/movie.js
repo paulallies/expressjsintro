@@ -9,6 +9,12 @@ exports.index = function(req, res){
 	});   
 };
 
+exports.create = function(req, res){
+	if(req.method == "GET"){
+		res.render("movie/create", { title: "Create"});
+	}
+}
+
 
 
 

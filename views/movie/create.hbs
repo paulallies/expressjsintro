@@ -1,1 +1,39 @@
-<>
+<form action="/movie/create" method="post">    
+    <div>
+        <fieldset>
+            <legend>Create Movie</legend>
+
+            <div class="editor-label">
+                <label for="title">Title name</label>
+            </div>
+            <div class="editor-field">
+                <input id="title" name="title" type="text"/>
+            </div>
+
+            <div class="editor-label">
+                <label for="releasedate">Release Date</label>
+            </div>
+            <div class="editor-field">
+                <input id="releasedate" name="releasedate" type="text" />
+            </div>
+
+            <div class="editor-label">
+                <label for="genre">Genre</label>
+            </div>
+            <div class="editor-field">
+                <input id="genre" name="genre" type="text" />
+            </div>
+
+            <div class="editor-label">
+                <label for="price">Price</label>
+            </div>
+            <div class="editor-field">
+                <input id="price" name="price" type="text" />
+            </div>
+
+            <p>
+                <input type="submit" value="Create" />
+            </p>
+        </fieldset>
+    </div>
+</form>
