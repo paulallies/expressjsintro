@@ -405,7 +405,7 @@ Run the application and notice that it now says "Express Movie App". Click the A
         </table>
     </p>
 <p>
-    Run the application and browse to the movies route by appending /movies to the URL in the address bar of your browser. The browser request http://localhost:3000/movies is routed to the default Index action method of the movies route module. In other words, the browser request http://localhost:3000/movies is effectively the same as the browser request http://localhost:3000/movies/index. The result is an empty list of movies, because you haven't added any yet.
+    Run the application and browse to the movies route by appending /movies to the URL in the address bar of your browser. The browser request http://localhost:3000/movies is routed to the default Index action method of the movies route module. The result is an empty list of movies, because you haven't added any yet.
 </p>
 <p>
     <img src="https://raw.github.com/paulallies/expressjsintro/master/tutorial/movielistempty.png" />
