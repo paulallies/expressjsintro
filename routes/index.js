@@ -10,5 +10,5 @@ exports.registerRoutes = function(app){
     app.get('/account/register', accountRoutes.register);
     app.get('/helloworld', helloworldRoutes.index);
     app.get('/helloworld/welcome', helloworldRoutes.welcome);
-    app.get('/movie', moviesRoutes.index);
+    app.get('/movies', moviesRoutes.index);
 }

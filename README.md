@@ -363,12 +363,17 @@ Run the application and notice that it now says "Express Movie App". Click the A
     exports.index = function(req, res){
         movieRepository.getAll(function(result){
             res.render("movie/index",{
+                title: "Move List",
                 movies : result
             }); 
         });   
     };
 
-<p>
+<p> 
+    Register the router in the /routes/index.js file by adding the following line:
+
+        app.get('/movies', moviesRoutes.index);
+
     The index function renders movie/index view so we need to create a view to display the movie list:
 </p>
     <h2>My Movie List</h2>
@@ -397,7 +402,9 @@ Run the application and notice that it now says "Express Movie App". Click the A
             </tbody>
         </table>
     </p>
-
+<p>
+    Run the application and browse to the movies route by appending /movies to the URL in the address bar of your browser. Because the application is relying on the default routing (defined in the Global.asax file), the browser request http://localhost:xxxxx/Movies is routed to the default Index action method of the Movies controller. In other words, the browser request http://localhost:xxxxx/Movies is effectively the same as the browser request http://localhost:xxxxx/Movies/Index. The result is an empty list of movies, because you haven't added any yet.
+</p>
 <p>
     <img src="https://raw.github.com/paulallies/expressjsintro/master/tutorial/movie.png" />
 </p>
