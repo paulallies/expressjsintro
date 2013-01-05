@@ -371,9 +371,11 @@ Run the application and notice that it now says "Express Movie App". Click the A
 
 <p> 
     Register the router in the /routes/index.js file by adding the following line:
+</p>
 
         app.get('/movies', moviesRoutes.index);
 
+<p>
     The index function renders movie/index view so we need to create a view to display the movie list:
 </p>
     <h2>My Movie List</h2>
