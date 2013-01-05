@@ -331,7 +331,7 @@ Run the application and notice that it now says "Express Movie App". Click the A
     }
 
     exports.create = function(movie, cb){
-    mongoose.connect(config.moviesConnectionString);
+        mongoose.connect(config.moviesConnectionString);
         var newMovie = new Movie({ 
             title: movie.title,  
             releasedate : movie.releasedate,
@@ -351,7 +351,7 @@ Run the application and notice that it now says "Express Movie App". Click the A
     }
 
 <p>
-    This file has a lot of important stuff that needs to be explained.  In the repository file we store all the methods that will be used by the routes.  We don't want to store database specific code in the route. So to display a list of movies we would call the "getAll" function and to create a movie we would call the "create" function. Note the connection to the database and reference to the movie model in the second and third lines of the repository file.
+    This file has a lot of important stuff that needs to be explained.  In the repository file we store all the methods that will be used by the routes.  We don't want to store database specific code in the route. So to display a list of movies we would call the "getAll" function and to create a movie we would call the "create" function. Note the connection to the database and reference to the movie model in the second and third lines of the repository file.  We have refactored the connectionstring into a config file in the root of the project folder where we will store future configuration settings.
 </p>
 
 <p>
@@ -367,4 +367,39 @@ Run the application and notice that it now says "Express Movie App". Click the A
             }); 
         });   
     };
+
+<p>
+    The index function renders movie/index view so we need to create a view to display the movie list:
+</p>
+    <h2>My Movie List</h2>
+    <p>
+        <a href="/movie/create">Create New</a>
+    </p>
+    <p>
+        <table>
+            <thead>
+                <tr>
+                    <th>Title</th>
+                    <th>Release Date</th>
+                    <th>Genre</th>
+                    <th>Price</th>
+                </tr>
+            </thead>
+            <tbody>
+            {{#each movies}}
+                <tr>
+                    <td>{{title}}</td>
+                    <td>{{releasedate}}</td>
+                    <td>{{genre}}</td>
+                    <td>{{price}}</td>
+                </tr>
+            {{/each}}
+            </tbody>
+        </table>
+    </p>
+
+<p>
+    <img src="https://raw.github.com/paulallies/expressjsintro/master/tutorial/movie.png" />
+</p>
+
 
