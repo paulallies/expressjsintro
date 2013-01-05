@@ -469,6 +469,13 @@ Run the application and notice that it now says "Express Movie App". Click the A
 
     app.get('/movie/create', moviesRoutes.create);
 
+<p>
+    Now when we run the application and browse to http://localhost:3000/movie/create we see the following
+</p>
+
+<p>
+    <img src="https://raw.github.com/paulallies/expressjsintro/master/tutorial/moviecreate.png" />
+</p>
 
 
 
