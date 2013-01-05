@@ -1,5 +1,5 @@
 {
-  "name": "application-name",
+  "name": "express-movie-application",
   "version": "0.0.1",
   "private": true,
   "scripts": {
@@ -9,6 +9,8 @@
     "express": "3.0.5",
     "less-middleware": "*",
     "hbs": "*",
-    "mongoose": "*"
+    "mongoose": "*",
+    "mocha": "*",
+    "should" : "*"
   }
 }

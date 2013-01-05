@@ -285,7 +285,15 @@ Run the application and notice that it now says "Express Movie App". Click the A
 </p>
 
 <p>
-    
+    Lets start by creating a folder called "models" under the project folder.  In this folder we create a file called "movie.js". This will store the model for our movie.
 </p>
+
+    
+    module.exports = {
+            title : { type: String},
+            releasedate : { type: Date},
+            genre : { type : String},
+            price : { type: Number}
+    };
 
 

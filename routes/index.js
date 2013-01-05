@@ -1,6 +1,7 @@
 var homeRoutes = require('./home')
   , accountRoutes = require('./account')
-  , helloworldRoutes = require('./helloworld');
+  , helloworldRoutes = require('./helloworld')
+  , moviesRoutes = require('./movie');
 
 exports.registerRoutes = function(app){
     app.get('/', homeRoutes.index);
@@ -9,4 +10,5 @@ exports.registerRoutes = function(app){
     app.get('/account/register', accountRoutes.register);
     app.get('/helloworld', helloworldRoutes.index);
     app.get('/helloworld/welcome', helloworldRoutes.welcome);
+    app.get('/movie', moviesRoutes.index);
 }
