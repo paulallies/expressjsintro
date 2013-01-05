@@ -1,10 +1,12 @@
 var mongoose = require("mongoose");
-mongoose.connect('mongodb://sa:sa@ds047207.mongolab.com:47207/movies');
+var config = require("../config");
+
 
 var schema = mongoose.Schema(require("./movie"));
 var Movie = mongoose.model('Movie', schema);
 
 exports.getAll = function(cb){
+	mongoose.connect(config.moviesConnectionString);
 	Movie.find(
         function(err, docs) {
         	if (!err){ 
@@ -29,7 +31,7 @@ exports.getAll = function(cb){
 }
 
 exports.create = function(movie, cb){
-
+mongoose.connect(config.moviesConnectionString);
 	var newMovie = new Movie({ 
 		title: movie.title,  
 		releasedate : movie.releasedate,
