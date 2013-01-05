@@ -455,4 +455,20 @@ Run the application and notice that it now says "Express Movie App". Click the A
         </div>
     </form>
 
+<p>
+    We must now create another route in our movie route to render this view
+</p>
+
+    exports.create = function(req, res){
+        if(req.method == "GET"){
+            res.render("movie/create", { title: "Create"});
+        }
+    }
+
+<p>We must also register the route</p>
+
+    app.get('/movie/create', moviesRoutes.create);
+
+
+
 
