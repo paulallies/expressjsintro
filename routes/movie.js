@@ -1,6 +1,6 @@
 var movieRepository = require("../models/movierepository");
 
-exports.index = function(req, res){
+var getAllMovies = function(req, res){
 	movieRepository.getAll(function(result){
 		res.render("movie/index",{
 			title: "Move List",
@@ -9,10 +9,29 @@ exports.index = function(req, res){
 	});   
 };
 
+exports.index = getAllMovies;
+
 exports.create = function(req, res){
-	if(req.method == "GET"){
-		res.render("movie/create", { title: "Create"});
+	
+	switch(req.method){
+		case "GET":
+			res.render("movie/create", { title: "Create"});
+			break;
+
+		case "POST":
+			var newMovie = {
+				title : req.body.title,
+				releasedate : req.body.releasedate,
+				genre : req.body.genre,
+				price : req.body.price 
+			};
+			movieRepository.create(newMovie, function(){
+				getAllMovies(req, res);
+			});
+			break;
+
 	}
+
 }
 
 

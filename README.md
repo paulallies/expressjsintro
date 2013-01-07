@@ -465,7 +465,7 @@ Run the application and notice that it now says "Express Movie App". Click the A
         }
     }
 
-<p>We must also register the route</p>
+<p>We must also register the route in the routes/index.js file</p>
 
     app.get('/movie/create', moviesRoutes.create);
 

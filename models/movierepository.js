@@ -40,12 +40,13 @@ mongoose.connect(config.moviesConnectionString);
 	});
 
 	newMovie.save(function (err) {
+		mongoose.disconnect();
 		if (err) {
 	  		cb(err);
 	  	}else{
 	  		cb();
 		}
-		mongoose.disconnect();
+		
 	});
 
 }
