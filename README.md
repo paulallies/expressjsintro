@@ -424,7 +424,10 @@ app.get('/movie/create', moviesRoutes.create);
 
 ```
 
-Now when we run the application and browse to http://localhost:3000/movie/create we see the following
+###Creating a Movie
+
+Select the Create New link. Enter some details about a movie and then click the Create button.
+
 
 <img src="https://raw.github.com/paulallies/expressjsintro/master/tutorial/moviecreate.png" />
 
