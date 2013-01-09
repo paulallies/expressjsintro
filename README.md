@@ -15,8 +15,8 @@ The application also lets you add, edit, and delete movies, as well as see detai
 
 ###Skills you will learn
 
-    Here's what you'll learn:
-'''javascript
+Here's what you'll learn:
+
     <ul>
         <li>How to create a new express project.</li>
         <li>How to create routes and views.</li>
@@ -25,26 +25,19 @@ The application also lets you add, edit, and delete movies, as well as see detai
         <li>How to edit data and enable data validation.</li>
     </ul>
 
-<h3>Creating Your First Application</h3>
-<p>
-    Our application will be an express based application. I am going to use an 
-    <a href="https://github.com/paulallies/ExpressTemplate_1" target="_blank">
-    express template</a> hosted on github.
-</p>
+###Creating Your First Application
 
-<p>
-    Right out of the box this template gives you two pages to visit and a basic 
+Our application will be an express based application. I am going to use an <a href="https://github.com/paulallies/ExpressTemplate_1" target="_blank"> express template</a> hosted on github.
+
+Right out of the box this template gives you two pages to visit and a basic 
     login page. The next step is to change how this application works and learn 
     a little bit about Express in the process. Close your browser and stop the 
     application and let's change some code.
-</p>
 
-<h3>Adding Routes</h3>
+###Adding Routes
 
-<p>
-    MVC stands for model-view-controller. MVC is a pattern for developing 
-    applications that are well architected and easy to maintain. MVC-based 
-    applications contain:
+MVC stands for model-view-controller. MVC is a pattern for developing applications that are well architected and easy to maintain. MVC-based applications contain:
+
     <ul>
         <li>
             Controllers/Routes: Code that handle incoming requests to the 
@@ -60,27 +53,21 @@ The application also lets you add, edit, and delete movies, as well as see detai
             generate HTML responses. 
         </li>
     </ul>
-</p>
-<p>
-    We'll be covering all these concepts in this tutorial series and show you 
-    how to use them to build an application.
-</p>
-<p>
-    Let's begin by creating a route module. Create a new file within the routes 
-    folder.  Name your new file "helloworld.js".  Inside the file helloworld.js, 
-    create two functions that look like the following code.
-</p>
-<pre>
+
+We'll be covering all these concepts in this tutorial series and show you how to use them to build an application.
+
+Let's begin by creating a route module. Create a new file within the routes folder.  Name your new file "helloworld.js".  Inside the file helloworld.js, create two functions that look like the following code.
+
+'''Javascript
     exports.index = function(req, res){
         res.send("This is my default action...");
     };
     exports.welcome = function(req, res){
         res.send("This is the Welcome action method...");
     };
-</pre>
-<p>
-    We also need to register the routes in the routes/index.js file
-</p>
+'''
+
+We also need to register the routes in the routes/index.js file
 <pre>
     var homeRoutes = require('./home')
       , accountRoutes = require('./account')
