@@ -137,7 +137,7 @@ Run the application and notice that it now says "Express Movie App". Click the A
 
 The complete layout.hbs file is shown below:
 
-```javascript
+```html
 <!doctype html>
 <html>
     <head>
@@ -386,7 +386,6 @@ To add some movies to the database we need a create view.  Create a new file und
     </div>
 </form>
 ```
-
 
 We must now create another route in our movie route to render this view
 
