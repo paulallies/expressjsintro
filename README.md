@@ -38,21 +38,11 @@ Right out of the box this template gives you two pages to visit and a basic
 
 MVC stands for model-view-controller. MVC is a pattern for developing applications that are well architected and easy to maintain. MVC-based applications contain:
 
-    <ul>
-        <li>
-            Controllers/Routes: Code that handle incoming requests to the 
-            application, retrieve data, and then specify view templates that 
-            return a response to the client.
-        </li>
-        <li>
-            Models: Code that represent the data of the application and that 
-            use validation logic to enforce business rules for that data.
-        </li>
-        <li>
-            Views: Template files that your application uses to dynamically 
-            generate HTML responses. 
-        </li>
-    </ul>
+* Controllers/Routes: Code that handle incoming requests to the application, retrieve data, and then specify view templates that return a response to the client.
+
+* Models: Code that represent the data of the application and that use validation logic to enforce business rules for that data.
+
+* Views: Template files that your application uses to dynamically generate HTML responses. 
 
 We'll be covering all these concepts in this tutorial series and show you how to use them to build an application.
 
