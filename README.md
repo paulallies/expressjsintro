@@ -182,20 +182,22 @@ Currently, the "welcome" function in the helloworld router takes a name and a nu
 
 Return to the helloworld.js route file and change the welcome method to pass a messageCollection to the view.  We fill the messageCollection with a list of objects.
 
+```javascript
+exports.welcome = function(req, res){
+    var name = req.query.name,
+        numTimes = req.query.numtimes,
+        messageCollection = [];
 
-        exports.welcome = function(req, res){
-            var name = req.query.name,
-                numTimes = req.query.numtimes,
-                messageCollection = [];
+    for(var i = 0; i < numTimes; i++){
+        messageCollection.push({message: "Hello "+ name});
+    }
 
-            for(var i = 0; i < numTimes; i++){
-                messageCollection.push({message: "Hello "+ name});
-            }
+    res.render('helloworld/welcome', { 
+        messageCollection: messageCollection
+    });
+};
 
-            res.render('helloworld/welcome', { 
-                messageCollection: messageCollection
-            });
-        };
+```
 
 The view then iterates through the collection to build a list.
 
@@ -219,6 +221,7 @@ In this section you'll add some code for managing movies in a database. This wil
 You’ll use a nodejs data-access technology known as the mongoose framework to define and work with these model classes. The mongoose framework allows you to create model objects by writing simple classes.  You can then have the database created on the fly from your classes, which enables a very clean and rapid development workflow communication to a mongodb database.
 
 Lets start by creating a folder called "models" under the project folder.  In this folder we create a file called "movie.js". This will store the model for our movie.
+
 
 ```javascript
 module.exports = {
@@ -281,7 +284,6 @@ exports.create = function(movie, cb){
         }
         mongoose.disconnect();
     });
-
 }
 
 ```
@@ -309,6 +311,7 @@ app.get('/movies', moviesRoutes.index);
 
 ```
 The index function renders movie/index view so we need to create a view to display the movie list:
+
 
 ```html
 <h2>My Movie List</h2>
