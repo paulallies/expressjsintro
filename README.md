@@ -48,13 +48,13 @@ We'll be covering all these concepts in this tutorial series and show you how to
 
 Let's begin by creating a route module. Create a new file within the routes folder.  Name your new file "helloworld.js".  Inside the file helloworld.js, create two functions that look like the following code.
 
-'''Javascript
-    exports.index = function(req, res){
-        res.send("This is my default action...");
-    };
-    exports.welcome = function(req, res){
-        res.send("This is the Welcome action method...");
-    };
+'''javascript
+exports.index = function(req, res){
+    res.send("This is my default action...");
+};
+exports.welcome = function(req, res){
+    res.send("This is the Welcome action method...");
+};
 '''
 
 We also need to register the routes in the routes/index.js file
