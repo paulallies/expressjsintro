@@ -19,7 +19,8 @@ exports.getAll = function(cb){
 		               	title : docs[d].title,
 		               	releasedate : (new Date(docs[d].releasedate)).toDateString(),
 		               	genre : docs[d].genre,
-		               	price : docs[d].price
+		               	price : docs[d].price,
+		               	rating: docs[d].rating
 	               	});
             	}
                	cb(movieList);
@@ -53,7 +54,8 @@ mongoose.connect(config.moviesConnectionString);
 		title: movie.title,  
 		releasedate : movie.releasedate,
 		genre : movie.genre,
-		price : movie.price
+		price : movie.price,
+		rating: movie.rating
 	});
 
 	newMovie.save(function (err) {

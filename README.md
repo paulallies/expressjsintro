@@ -255,7 +255,8 @@ exports.getAll = function(cb){
                         title : docs[d].title,
                         releasedate : docs[d].releasedate,
                         genre : docs[d].genre,
-                        price : docs[d].price
+                        price : docs[d].price,
+                        rating: docs[d].rating
                     });
                 }
                 cb(movieList);
