@@ -7,8 +7,6 @@
 		<thead>
 			<tr>
 				<th></th>
-				<th></th>
-				<th></th>
 				<th>Title</th>
 				<th>Release Date</th>
 				<th>Genre</th>
@@ -20,9 +18,11 @@
 		<tbody>
 	    {{#each movies}}
 	    	<tr>
-	    		<td><a href="/movie/edit/{{id}}">Edit</a></td>
-	    		<td><a href="/movie/details/{{id}}">Details</a></td>
-	    		<td><a href="/movie/delete/{{id}}">Delete</a></td>
+	    		<td>	
+	    			<a href="/movie/edit/{{id}}">Edit</a> |
+	    			<a href="/movie/details/{{id}}">Details</a> |
+	    			<a href="/movie/delete/{{id}}">Delete</a>
+	    		</td>
 	    		<td>{{title}}</td>
 	    		<td>{{releasedate}}</td>
 	    		<td>{{genre}}</td>

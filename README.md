@@ -119,7 +119,7 @@ Run the application and browse to the HelloWorld controller (http://localhost:30
 
 <img src="https://raw.github.com/paulallies/expressjsintro/master/tutorial/helloworldview.png" />
 
-Looks pretty good. However, notice that the big title on the page says "My MVC Application." Let's change those.
+Looks pretty good. However, notice that the big title on the page says "My Express Application." Let's change those.
 
 ###Changing Views and Layout Pages
 
@@ -131,7 +131,7 @@ First, you want to change the "My Express Application" title at the top of the p
 </div>
 ```
 
-Run the application and notice that it now says "Express Movie App". Click the About link, and you see how that page shows "MVC Movie App", too. We were able to make the change once in the layout template and have all pages on the site reflect the new title.
+Run the application and notice that it now says "Express Movie App". Click the About link, and you see how that page shows "Express Movie App", too. We were able to make the change once in the layout template and have all pages on the site reflect the new title.
 
 <img src="https://raw.github.com/paulallies/expressjsintro/master/tutorial/about.png" />
 
@@ -176,7 +176,7 @@ The complete layout.hbs file is shown below:
 
 Before we go to a database and talk about models, though, let's first talk about passing information from the route to a view. Routers are invoked in response to an incoming URL request. A router is where you write the code that handles the incoming parameters, retrieves data from a database, and ultimately decides what type of response to send back to the browser. View templates can then be used from a router to generate and format an HTML response to the browser.
 
-routers are responsible for providing whatever data or objects are required in order for a view template to render a response to the browser. A view template should never perform business logic or interact with a database directly. Instead, it should work only with the data that's provided to it by the router. Maintaining this "separation of concerns" helps keep your code clean and more maintainable.
+Routers are responsible for providing whatever data or objects are required in order for a view template to render a response to the browser. A view template should never perform business logic or interact with a database directly. Instead, it should work only with the data that's provided to it by the router. Maintaining this "separation of concerns" helps keep your code clean and more maintainable.
 
 Currently, the "welcome" function in the helloworld router takes a name and a numTimes parameter and then outputs the values directly to the browser. Rather than have the route render this response as a string, let’s change the route to use a view template instead. The view template will generate a dynamic response, which means that you need to pass appropriate bits of data from the route to the view in order to generate the response. You can do this by having the route put the dynamic data that the view template needs in a object that the view template can then access.
 
@@ -210,7 +210,7 @@ The view then iterates through the collection to build a list.
 </ul>
 ```
 
-Run the application and browse to the following URL: http://localhost:3000/HelloWorld/Welcome?name=Scott&numtimes=4.  Now data is taken from the URL and passed to the route automatically. The route packages the data passes that object to the view. The view then displays the data as HTML to the user.
+Run the application and browse to the following URL: http://localhost:3000/HelloWorld/Welcome?name=Scott&numtimes=5.  Now data is taken from the URL and passed to the route automatically. The route packages the data passes that object to the view. The view then displays the data as HTML to the user.
 
 <img src="https://raw.github.com/paulallies/expressjsintro/master/tutorial/helloworldview1.png" />
 
@@ -218,7 +218,7 @@ Run the application and browse to the following URL: http://localhost:3000/Hello
 
 In this section you'll add some code for managing movies in a database. This will be the "model" part of the application.
 
-You’ll use a nodejs data-access technology known as the mongoose framework to define and work with these model classes. The mongoose framework allows you to create model objects by writing simple classes.  You can then have the database created on the fly from your classes, which enables a very clean and rapid development workflow communication to a mongodb database.
+You’ll use a nodejs data-access technology known as the <a href="http://mongoosejs.com/" target="_blank">mongoose framework</a> to define and work with these model classes. The mongoose framework allows you to create model objects by writing simple classes.  You can then have the database created on the fly from your classes, which enables a very clean and rapid development workflow communication to a <a href="http://www.mongodb.org/" target="_blank">mongodb</a> database.
 
 Lets start by creating a folder called "models" under the project folder.  In this folder we create a file called "movie.js". This will store the model for our movie.
 
@@ -232,7 +232,7 @@ module.exports = {
 };
     
 ```    
-We also create a repository file to store all our movie operation methods like getAll and create 
+We also create a repository file to store all our movie operation methods
 
 ```javascript
 var mongoose = require("mongoose");
@@ -288,7 +288,7 @@ exports.create = function(movie, cb){
 
 ```
 
-This file has a lot of important stuff that needs to be explained.  In the repository file we store all the methods that will be used by the routes.  We don't want to store database specific code in the route. So to display a list of movies we would call the "getAll" function and to create a movie we would call the "create" function. Note the connection to the database and reference to the movie model in the second and third lines of the repository file.  We have refactored the connectionstring into a config file in the root of the project folder where we will store future configuration settings.
+This file has a lot of important stuff that needs to be explained.  In the repository file we store all the methods that will be used by the routes.  We don't want to store database specific code in the route. So to display a list of movies we would call the "getAll" function and to create a movie we would call the "create" function.  We have refactored the connectionstring into a config file in the root of the project folder where we will store future configuration settings.
 
 Next, you'll build a new movie routes module that your can use to display the movie data and allow users to create new movie listings.  Let's look at the first function of the movie route.  Create a file named movie.js under the routes folder and add the following code:
 
@@ -323,8 +323,6 @@ The index function renders movie/index view so we need to create a view to displ
         <thead>
             <tr>
                 <th></th>
-                <th></th>
-                <th></th>
                 <th>Title</th>
                 <th>Release Date</th>
                 <th>Genre</th>
@@ -336,9 +334,11 @@ The index function renders movie/index view so we need to create a view to displ
         <tbody>
         {{#each movies}}
             <tr>
-                <td><a href="/movie/edit/{{id}}">Edit</a></td>
-                <td><a href="/movie/details/{{id}}">Details</a></td>
-                <td><a href="/movie/delete/{{id}}">Delete</a></td>
+                <td>
+                    <a href="/movie/edit/{{id}}">Edit</a> |
+                    <a href="/movie/details/{{id}}">Details</a> |
+                    <a href="/movie/delete/{{id}}">Delete</a>
+                </td>
                 <td>{{title}}</td>
                 <td>{{releasedate}}</td>
                 <td>{{genre}}</td>
