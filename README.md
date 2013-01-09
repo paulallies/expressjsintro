@@ -48,6 +48,21 @@ We'll be covering all these concepts in this tutorial series and show you how to
 
 Let's begin by creating a route module. Create a new file within the routes folder.  Name your new file "helloworld.js".  Inside the file helloworld.js, create two functions that look like the following code.
 
+```javascript
+var grid = require('selenium-grid-status');
+
+grid.available({
+    host: '10.0.1.25',
+}, function(err, available) {
+    if (err) {
+        console.log('Error', err);
+        process.exit(1);
+    }
+    console.log(JSON.stringify(available, null, 4));
+    console.log('There are', available.length, 'browsers attached and ready');
+});
+```
+
 '''javascript
 exports.index = function(req, res){
     res.send("This is my default action...");
