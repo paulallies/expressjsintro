@@ -1,6 +1,6 @@
 This tutorial will teach you the basics of building a nodejs MVC Web application using nodejs and expressjs. 
 
-#What You'll Build
+###What You'll Build
 
 
 
@@ -13,11 +13,10 @@ The application also lets you add, edit, and delete movies, as well as see detai
 
 <img src="https://raw.github.com/paulallies/expressjsintro/master/tutorial/Details.png" />
 
-#Skills you will learn
+###Skills you will learn
 
-<p>
     Here's what you'll learn:
-
+'''javascript
     <ul>
         <li>How to create a new express project.</li>
         <li>How to create routes and views.</li>
@@ -25,7 +24,6 @@ The application also lets you add, edit, and delete movies, as well as see detai
         <li>How to retrieve and display data.</li>
         <li>How to edit data and enable data validation.</li>
     </ul>
-</p>
 
 <h3>Creating Your First Application</h3>
 <p>
