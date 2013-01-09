@@ -17,11 +17,11 @@ The application also lets you add, edit, and delete movies, as well as see detai
 
 Here's what you'll learn:
 
-*How to create a new express project.
-*How to create routes and views.
-*How to create a new database using the MongoDB and Mongoose.
-*How to retrieve and display data.
-*How to edit data and enable data validation.
+* How to create a new express project.
+* How to create routes and views.
+* How to create a new database using the MongoDB and Mongoose.
+* How to retrieve and display data.
+* How to edit data and enable data validation.
 
 ###Creating Your First Application
 
