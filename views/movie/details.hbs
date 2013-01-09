@@ -1,0 +1,39 @@
+<div>
+    <fieldset>
+        <legend>Movie Details</legend>
+{{#movie}}
+        <div class="editor-label">
+            <label for="title">Title:</label>
+        </div>
+        <div class="editor-field">
+            <span>{{title}}</span>
+        </div>
+
+        <div class="editor-label">
+            <label for="releasedate">Release Date:</label>
+        </div>
+        <div class="editor-field">
+            <label id="releasedate" >{{releasedate}}</label>
+        </div>
+
+        <div class="editor-label">
+            <label for="genre">Genre:</label>
+        </div>
+        <div class="editor-field">
+            <label id="genre">{{genre}}</label>
+        </div>
+
+        <div class="editor-label">
+            <label for="price">Price:</label>
+        </div>
+        <div class="editor-field">
+            <label id="price" >{{price}}</label 
+        </div>
+{{/movie}}
+
+    </fieldset>
+</div>
+
+<p>
+    <a href="/movies">Back to Movie List</a>
+</p>

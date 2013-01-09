@@ -7,7 +7,7 @@ var Movie = mongoose.model('Movie', schema);
 
 
 exports.getAll = function(cb){
-	mongoose.connect(config.moviesConnectionString);
+	var db = mongoose.connect(config.moviesConnectionString);
 	Movie.find(
         function(err, docs) {
         	if (!err){ 
@@ -15,6 +15,7 @@ exports.getAll = function(cb){
 	            for(var d in docs)
 	            {
 	            	movieList.push({
+	            		id : docs[d]._id,
 		               	title : docs[d].title,
 		               	releasedate : (new Date(docs[d].releasedate)).toDateString(),
 		               	genre : docs[d].genre,
@@ -22,7 +23,22 @@ exports.getAll = function(cb){
 	               	});
             	}
                	cb(movieList);
-               	mongoose.disconnect();
+               	db.disconnect();
+            }
+            else { 
+            	throw err;
+            }
+        }
+    );	
+}
+
+exports.getMovie = function(id, cb){
+	var db = mongoose.connect(config.moviesConnectionString);
+	Movie.findOne({ _id : id},
+        function(err, doc) {
+        	if (!err){ 
+               	cb(doc);
+               	db.disconnect();
             }
             else { 
             	throw err;

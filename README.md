@@ -57,6 +57,7 @@ exports.welcome = function(req, res){
 ```
 
 We also need to register the routes in the routes/index.js file
+
 ```javascript
 var homeRoutes = require('./home'),
     accountRoutes = require('./account'),
@@ -79,59 +80,44 @@ Your route module is named helloworld and the first method above is named index.
 
 Browse to http://localhost:3000/helloworld/welcome. The Welcome method runs and returns the string "This is the Welcome action method...".
 
-<p>
-    <img src="https://raw.github.com/paulallies/expressjsintro/master/tutorial/welcome.png" />
-</p>
+<img src="https://raw.github.com/paulallies/expressjsintro/master/tutorial/welcome.png" />
 
-<p>
-    Let's modify the example slightly so that you can pass some parameter information from the URL to the route (for example, /helloworld/welcome?name=Scott&numtimes=4). Change your Welcome function to include two parameters as shown below.
-</p>
+Let's modify the example slightly so that you can pass some parameter information from the URL to the route (for example, /helloworld/welcome?name=Scott&numtimes=4). Change your Welcome function to include two parameters as shown below.
 
-<pre>
-    exports.welcome = function(req, res){
-        var name = req.query.name,
-            numtimes = req.query.numtimes;
-        res.send("Hello " + name + ", NumTimes is: " + numtimes);
-    };
-</pre>
+```javascript
+exports.welcome = function(req, res){
+    var name = req.query.name,
+        numtimes = req.query.numtimes;
+    res.send("Hello " + name + ", NumTimes is: " + numtimes);
+};
 
-<p>
-    Run your application and browse to the example URL (http://localhost:3000/helloworld/welcome?name=Scott&numtimes=4). You can try different values for name and numtimes in the URL. The system automatically maps the named parameters from the query string in the address bar to parameters in your method.
-</p>  
+```
+Run your application and browse to the example URL (http://localhost:3000/helloworld/welcome?name=Scott&numtimes=4). You can try different values for name and numtimes in the URL. The system automatically maps the named parameters from the query string in the address bar to parameters in your method.
 
-<p>
 <img src="https://raw.github.com/paulallies/expressjsintro/master/tutorial/welcomewithquery.png" />
-</p>  
-<p>
-In both these examples the router has been doing the "VC" portion of MVC — that is, the view and controller work. The controller is returning HTML directly. Ordinarily you don't want controllers returning HTML directly, since that becomes very cumbersome to code. Instead we'll typically use a separate view template file to help generate the HTML response. Let's look next at how we can do this.
-</p>
 
-<p>We will now modify the helloworld route code to use view template files to cleanly encapsulate the process of generating HTML responses to a client.  You'll create a view template file using the handlebars. Handlebars view templates have a .hbs file extension, and provide an elegant way to create HTML output using js.
+In both these examples the router has been doing the "VC" portion of MVC — that is, the view and controller work. The controller is returning HTML directly. Ordinarily you don't want controllers returning HTML directly, since that becomes very cumbersome to code. Instead we'll typically use a separate view template file to help generate the HTML response. Let's look next at how we can do this.
+
+We will now modify the helloworld route code to use view template files to cleanly encapsulate the process of generating HTML responses to a client.  You'll create a view template file using the handlebars. Handlebars view templates have a .hbs file extension, and provide an elegant way to create HTML output using js.
 
 Start by using a view template with the Index method in the helloworld router module. Currently the Index method returns a string with a message that is hard-coded. Change the Index method to return a View object, as shown in the following:
-</p>
 
-<pre>
-    exports.index = function(req, res){
-        res.render("/helloworld/index");
-    };
-</pre>
+```javascript
+exports.index = function(req, res){
+    res.render("/helloworld/index");
+};
+```
 
-<p>
-    Notice that when we want to return a view we use the response function render instead of send.  The views to be rendered are located under the views folder. Add the folder "helloworld" under the views folder.  This folder would contain all the helloworld related views. Then add a new file called "index.hbs" for the view with the following code:
+Notice that when we want to return a view we use the response function render instead of send.  The views to be rendered are located under the views folder. Add the folder "helloworld" under the views folder.  This folder would contain all the helloworld related views. Then add a new file called "index.hbs" for the view with the following code:
 
-</p>
-
+```html
+<h2>Hello World Index Page</h2>
+<p>Put content here</p>
+```
     
-        <h2>Hello World Index Page</h2>
-        <p>Put content here</p>
+Run the application and browse to the HelloWorld controller (http://localhost:3000/HelloWorld). The Index method in your router didn't do much work; it simply ran the statement res.render("/helloworld/index"), which specified that the method should use a view template file to render a response to the browser. The image below shows the rendered view.
 
-<p>
-    Run the application and browse to the HelloWorld controller (http://localhost:3000/HelloWorld). The Index method in your router didn't do much work; it simply ran the statement res.render("/helloworld/index"), which specified that the method should use a view template file to render a response to the browser. The image below shows the rendered view.
-</p>
-<p>
-    <img src="https://raw.github.com/paulallies/expressjsintro/master/tutorial/helloworldview.png" />
-</p>
+<img src="https://raw.github.com/paulallies/expressjsintro/master/tutorial/helloworldview.png" />
 
 <p>
 Looks pretty good. However, notice that the big title on the page says "My MVC Application." Let's change those.
@@ -413,9 +399,7 @@ Run the application and notice that it now says "Express Movie App". Click the A
         </div>
     </form>
 
-<p>
-    We must now create another route in our movie route to render this view
-</p>
+We must now create another route in our movie route to render this view
 
     exports.create = function(req, res){
         if(req.method == "GET"){

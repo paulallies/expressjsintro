@@ -10,6 +10,9 @@
 				<th>Release Date</th>
 				<th>Genre</th>
 				<th>Price</th>
+				<th></th>
+				<th></th>
+				<th></th>
 			</tr>
 		</thead>
 		<tbody>
@@ -19,6 +22,9 @@
 	    		<td>{{releasedate}}</td>
 	    		<td>{{genre}}</td>
 	    		<td>{{price}}</td>
+	    		<td><a href="/movie/details/{{id}}">Details</a></td>
+	    		<td><a href="/movie/edit/{{id}}">Edit</a></td>
+	    		<td><a href="/movie/delete/{{id}}">Delete</a></td>
 	    	</tr>
 	    {{/each}}
 		</tbody>
