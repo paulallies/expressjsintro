@@ -442,6 +442,33 @@ Clicking the Create button causes the form to be posted to the server, where the
 
 <img src="https://raw.github.com/paulallies/expressjsintro/master/tutorial/movielist1.png" />
 
+Lets look at the code that which made it possible to take a information from a posted form, add it to the database and redirect to the movie list to display the result.
+
+To handle the movie/create post we had to add another function to the "routes/movie.js" route module:
+
+```javascript
+exports.add  = function(req, res){
+    var newMovie = {
+        title : req.body.title,
+        releasedate : req.body.releasedate,
+        genre : req.body.genre,
+        price : req.body.price, 
+        rating: req.body.rating
+    };
+
+    movieRepository.create(newMovie, function(){
+        res.redirect("movies")
+    });
+}
+```
+
+We also had to register this function in the routes/index.js file:
+
+```javascript
+app.post('/movie/create', moviesRoutes.add);
+```
+
+
 
 
 
