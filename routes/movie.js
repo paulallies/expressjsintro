@@ -1,6 +1,6 @@
 var movieRepository = require("../models/movierepository");
 
-var getAllMovies = function(req, res){
+exports.index = function(req, res){
 	movieRepository.getAll(function(result){
 		res.render("movie/index",{
 			title: "Move List",
@@ -8,8 +8,6 @@ var getAllMovies = function(req, res){
     	});	
 	});   
 };
-
-exports.index = getAllMovies;
 
 exports.create = function(req, res){
 	res.render("movie/create", { title: "Create"});
@@ -23,8 +21,9 @@ exports.add  = function(req, res){
 		price : req.body.price, 
 		rating: req.body.rating
 	};
+
 	movieRepository.create(newMovie, function(){
-		getAllMovies(req, res);
+		res.redirect("movies")
 	});
 }
 
