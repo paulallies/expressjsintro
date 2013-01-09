@@ -315,31 +315,41 @@ The index function renders movie/index view so we need to create a view to displ
 
 ```html
 <h2>My Movie List</h2>
-    <p>
-        <a href="/movie/create">Create New</a>
-    </p>
-    <p>
-        <table>
-            <thead>
-                <tr>
-                    <th>Title</th>
-                    <th>Release Date</th>
-                    <th>Genre</th>
-                    <th>Price</th>
-                </tr>
-            </thead>
-            <tbody>
-            {{#each movies}}
-                <tr>
-                    <td>{{title}}</td>
-                    <td>{{releasedate}}</td>
-                    <td>{{genre}}</td>
-                    <td>{{price}}</td>
-                </tr>
-            {{/each}}
-            </tbody>
-        </table>
-    </p>
+<p>
+    <a href="/movie/create">Create New</a>
+</p>
+<p>
+    <table>
+        <thead>
+            <tr>
+                <th></th>
+                <th></th>
+                <th></th>
+                <th>Title</th>
+                <th>Release Date</th>
+                <th>Genre</th>
+                <th>Price</th>
+                <th>Rating</th>
+
+            </tr>
+        </thead>
+        <tbody>
+        {{#each movies}}
+            <tr>
+                <td><a href="/movie/edit/{{id}}">Edit</a></td>
+                <td><a href="/movie/details/{{id}}">Details</a></td>
+                <td><a href="/movie/delete/{{id}}">Delete</a></td>
+                <td>{{title}}</td>
+                <td>{{releasedate}}</td>
+                <td>{{genre}}</td>
+                <td>{{price}}</td>
+                <td>{{rating}}</td>
+
+            </tr>
+        {{/each}}
+        </tbody>
+    </table>
+</p>
 ```
     
 Run the application and browse to the movies route by appending /movies to the URL in the address bar of your browser. The browser request http://localhost:3000/movies is routed to the default Index action method of the movies route module. The result is an empty list of movies, because you haven't added any yet.

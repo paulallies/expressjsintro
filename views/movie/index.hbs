@@ -6,25 +6,29 @@
 	<table>
 		<thead>
 			<tr>
+				<th></th>
+				<th></th>
+				<th></th>
 				<th>Title</th>
 				<th>Release Date</th>
 				<th>Genre</th>
 				<th>Price</th>
-				<th></th>
-				<th></th>
-				<th></th>
+				<th>Rating</th>
+
 			</tr>
 		</thead>
 		<tbody>
 	    {{#each movies}}
 	    	<tr>
+	    		<td><a href="/movie/edit/{{id}}">Edit</a></td>
+	    		<td><a href="/movie/details/{{id}}">Details</a></td>
+	    		<td><a href="/movie/delete/{{id}}">Delete</a></td>
 	    		<td>{{title}}</td>
 	    		<td>{{releasedate}}</td>
 	    		<td>{{genre}}</td>
 	    		<td>{{price}}</td>
-	    		<td><a href="/movie/details/{{id}}">Details</a></td>
-	    		<td><a href="/movie/edit/{{id}}">Edit</a></td>
-	    		<td><a href="/movie/delete/{{id}}">Delete</a></td>
+	    		<td>{{rating}}</td>
+
 	    	</tr>
 	    {{/each}}
 		</tbody>
