@@ -10,5 +10,6 @@ module.exports = {
         title : { type: String},
         releasedate : { type: Date},
         genre : { type : String},
-        price : { type: Number}
+        price : { type: Number}, 
+        rating: {type: String}
 };

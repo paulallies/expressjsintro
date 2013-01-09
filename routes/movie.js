@@ -20,7 +20,8 @@ exports.add  = function(req, res){
 		title : req.body.title,
 		releasedate : req.body.releasedate,
 		genre : req.body.genre,
-		price : req.body.price 
+		price : req.body.price, 
+		rating: req.body.rating
 	};
 	movieRepository.create(newMovie, function(){
 		getAllMovies(req, res);

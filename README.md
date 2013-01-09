@@ -228,7 +228,8 @@ module.exports = {
         title : { type: String},
         releasedate : { type: Date},
         genre : { type : String},
-        price : { type: Number}
+        price : { type: Number},
+        rating: {type: String}
 };
     
 ```    
@@ -270,10 +271,11 @@ exports.getAll = function(cb){
 exports.create = function(movie, cb){
     mongoose.connect(config.moviesConnectionString);
     var newMovie = new Movie({ 
-        title: movie.title,  
-        releasedate : movie.releasedate,
-        genre : movie.genre,
-        price : movie.price
+        title : req.body.title,
+        releasedate : req.body.releasedate,
+        genre : req.body.genre,
+        price : req.body.price, 
+        rating: req.body.rating
     });
 
     newMovie.save(function (err) {
@@ -352,7 +354,7 @@ The index function renders movie/index view so we need to create a view to displ
 </p>
 ```
     
-Run the application and browse to the movies route by appending /movies to the URL in the address bar of your browser. The browser request http://localhost:3000/movies is routed to the default Index action method of the movies route module. The result is an empty list of movies, because you haven't added any yet.
+Run the application and browse to the movies route by appending /movies to the URL in the address bar of your browser. The browser request http://localhost:3000/movies is routed to the default Index action method of the movies route module. The result is an empty list of movies, because you haven't added any yet.  Note the "Create New" link in the movie list view. 
 
 <img src="https://raw.github.com/paulallies/expressjsintro/master/tutorial/movielistempty.png" />
 
