@@ -438,5 +438,11 @@ Select the Create New link. Enter some details about a movie and then click the 
 
 <img src="https://raw.github.com/paulallies/expressjsintro/master/tutorial/moviecreate.png" />
 
+Clicking the Create button causes the form to be posted to the server, where the movie information is saved in the database. You're then redirected to the /Movies URL, where you can see the newly created movie in the listing.
+
+<img src="https://raw.github.com/paulallies/expressjsintro/master/tutorial/movielist1.png" />
+
+
+
 
 
