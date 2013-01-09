@@ -11,11 +11,10 @@ You'll implement a simple movie-listing application that supports creating, edit
 The application also lets you add, edit, and delete movies, as well as see details about individual ones. All data-entry scenarios include validation to ensure that the data stored in the database is correct.
 
 
-<p>
-    <img src="https://raw.github.com/paulallies/expressjsintro/master/tutorial/Details.png" />
-</p>
+<img src="https://raw.github.com/paulallies/expressjsintro/master/tutorial/Details.png" />
 
-<h3>Skills you will learn</h3>
+Skills you will learn
+=====================
 
 <p>
     Here's what you'll learn:
