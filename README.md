@@ -1,7 +1,7 @@
 This tutorial will teach you the basics of building a nodejs MVC Web application using nodejs and expressjs. 
 
 What You'll Build
-_________________
+-----------------
 
 
 You'll implement a simple movie-listing application that supports creating, editing, and listing movies from a database. Below are two screenshots of the application you’ll build. It includes a page that displays a list of movies from a database: 
