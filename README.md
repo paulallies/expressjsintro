@@ -16,6 +16,7 @@ The application also lets you add, edit, and delete movies, as well as see detai
 Skills you will learn
 =====================
 
+'''html
 <p>
     Here's what you'll learn:
 
@@ -27,7 +28,7 @@ Skills you will learn
         <li>How to edit data and enable data validation.</li>
     </ul>
 </p>
-
+'''
 <h3>Creating Your First Application</h3>
 <p>
     Our application will be an express based application. I am going to use an 
