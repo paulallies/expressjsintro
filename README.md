@@ -391,6 +391,13 @@ To add some movies to the database we need a create view.  Create a new file und
             <div class="editor-field">
                 <input id="price" name="price" type="text" />
             </div>
+            
+            <div class="editor-label">
+                <label for="rating">Rating</label>
+            </div>
+            <div class="editor-field">
+                <input id="rating" name="rating" type="text" />
+            </div>
 
             <p>
                 <input type="submit" value="Create" />
