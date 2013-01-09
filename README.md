@@ -1,26 +1,14 @@
-<p>
-    This tutorial will teach you the basics of building a nodejs MVC Web application 
-    using nodejs and expressjs. 
-</p>
+This tutorial will teach you the basics of building a nodejs MVC Web application using nodejs and expressjs. 
 
-<h3>What You'll Build</h3>
+What You'll Build
+-----------------
 
-<p>
-    You'll implement a simple movie-listing application that supports creating, 
-    editing, and listing movies from a database. Below are two screenshots of the 
-    application you’ll build. It includes a page that displays a list of movies 
-    from a database: 
-</p>
+You'll implement a simple movie-listing application that supports creating, editing, and listing movies from a database. Below are two screenshots of the application you’ll build. It includes a page that displays a list of movies from a database: 
 
-<p>
-    <img src="https://raw.github.com/paulallies/expressjsintro/master/tutorial/MovieList.png" />
-</p>
+<img src="https://raw.github.com/paulallies/expressjsintro/master/tutorial/MovieList.png" />
 
-<p>
-    The application also lets you add, edit, and delete movies, as well as see 
-    details about individual ones. All data-entry scenarios include validation to 
-    ensure that the data stored in the database is correct.
-</p>
+The application also lets you add, edit, and delete movies, as well as see details about individual ones. All data-entry scenarios include validation to ensure that the data stored in the database is correct.
+
 
 <p>
     <img src="https://raw.github.com/paulallies/expressjsintro/master/tutorial/Details.png" />

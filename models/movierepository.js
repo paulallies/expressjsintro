@@ -5,6 +5,7 @@ var config = require("../config");
 var schema = mongoose.Schema(require("./movie"));
 var Movie = mongoose.model('Movie', schema);
 
+
 exports.getAll = function(cb){
 	mongoose.connect(config.moviesConnectionString);
 	Movie.find(
@@ -15,7 +16,7 @@ exports.getAll = function(cb){
 	            {
 	            	movieList.push({
 		               	title : docs[d].title,
-		               	releasedate : docs[d].releasedate,
+		               	releasedate : (new Date(docs[d].releasedate)).toDateString(),
 		               	genre : docs[d].genre,
 		               	price : docs[d].price
 	               	});
