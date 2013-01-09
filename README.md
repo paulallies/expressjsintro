@@ -408,6 +408,10 @@ To add some movies to the database we need a create view.  Create a new file und
         </fieldset>
     </div>
 </form>
+
+<p>
+    <a href="/movies">Back to List</a>
+</p>
 ```
 
 We must now create another route in our movie route to render this view
