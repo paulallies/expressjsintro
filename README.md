@@ -17,13 +17,11 @@ The application also lets you add, edit, and delete movies, as well as see detai
 
 Here's what you'll learn:
 
-    <ul>
-        <li>How to create a new express project.</li>
-        <li>How to create routes and views.</li>
-        <li>How to create a new database using the MongoDB and Mongoose.</li>
-        <li>How to retrieve and display data.</li>
-        <li>How to edit data and enable data validation.</li>
-    </ul>
+*How to create a new express project.
+*How to create routes and views.
+*How to create a new database using the MongoDB and Mongoose.
+*How to retrieve and display data.
+*How to edit data and enable data validation.
 
 ###Creating Your First Application
 
@@ -59,30 +57,27 @@ exports.welcome = function(req, res){
 ```
 
 We also need to register the routes in the routes/index.js file
-<pre>
-    var homeRoutes = require('./home')
-      , accountRoutes = require('./account')
-      <b>, helloworldRoutes = require('./helloworld');</b>
+```javascript
+        var homeRoutes = require('./home')
+          , accountRoutes = require('./account')
+          <b>, helloworldRoutes = require('./helloworld');</b>
 
-    exports.registerRoutes = function(app){
-        app.get('/', homeRoutes.index);
-        app.get('/home/about', homeRoutes.about);
-        app.get('/account/logon', accountRoutes.logon);
-        app.get('/account/register', accountRoutes.register);
-        <b>app.get('/helloworld', helloworldRoutes.index);
-        app.get('/helloworld/welcome', helloworldRoutes.welcome);</b>
-    }
-</pre>
-<p>
-    Your route module is named helloworld and the first method above is named index. Let’s invoke it from a browser. Run the application (node app.js). In the browser, append "helloworld" to the path in the address bar. (For example, in the illustration below, it's http://localhost:3000/helloworld.) The page in the browser will look like the following screenshot. In the function above, the code returned a string directly. You told the system to just return some HTML, and it did!
-</p>
-<p>
-    <img src="https://raw.github.com/paulallies/expressjsintro/master/tutorial/helloworld.png" />
-</p>
+        exports.registerRoutes = function(app){
+            app.get('/', homeRoutes.index);
+            app.get('/home/about', homeRoutes.about);
+            app.get('/account/logon', accountRoutes.logon);
+            app.get('/account/register', accountRoutes.register);
+            <b>app.get('/helloworld', helloworldRoutes.index);
+            app.get('/helloworld/welcome', helloworldRoutes.welcome);</b>
+        }
+```
 
-<p>
-    Browse to http://localhost:3000/helloworld/welcome. The Welcome method runs and returns the string "This is the Welcome action method...".
-</p>
+Your route module is named helloworld and the first method above is named index. Let’s invoke it from a browser. Run the application (node app.js). In the browser, append "helloworld" to the path in the address bar. (For example, in the illustration below, it's http://localhost:3000/helloworld.) The page in the browser will look like the following screenshot. In the function above, the code returned a string directly. You told the system to just return some HTML, and it did!
+    
+
+<img src="https://raw.github.com/paulallies/expressjsintro/master/tutorial/helloworld.png" />
+
+Browse to http://localhost:3000/helloworld/welcome. The Welcome method runs and returns the string "This is the Welcome action method...".
 
 <p>
     <img src="https://raw.github.com/paulallies/expressjsintro/master/tutorial/welcome.png" />
