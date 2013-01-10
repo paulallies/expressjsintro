@@ -67,3 +67,19 @@ mongoose.connect(config.moviesConnectionString);
 	});
 
 }
+
+exports.delete = function(id, cb){
+	var db = mongoose.connect(config.moviesConnectionString);
+	Movie.remove({ _id : id},
+        function(err, doc) {
+        	if (!err){ 
+               	cb();
+               	db.disconnect();
+            }
+            else { 
+            	throw err;
+            }
+        }
+    );
+
+}
