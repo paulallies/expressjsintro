@@ -1,6 +1,7 @@
 var config = require("../config");
 var mongoose = require("mongoose");
 
+
 var schema = mongoose.Schema(require("./movie")),
 	Movie = mongoose.model('Movie', schema);
 
@@ -83,6 +84,30 @@ exports.delete = function(id, cb){
             }
             else { 
             	throw err;
+            }
+        }
+    );
+}
+
+exports.edit = function(movie, cb){
+	mongoose.connect(config.moviesConnectionString);
+
+	var updatedMovie = new Movie({
+		_id : mongoose.Schema.Types.ObjectId(movie.id),
+		title: movie.title,  
+		releasedate : movie.releasedate,
+		genre : movie.genre,
+		price : movie.price,
+		rating: movie.rating.toUpperCase()
+	});
+
+	updatedMovie.save(function(err) {
+        	mongoose.connection.close();
+        	if (!err){ 
+               	cb();
+            }
+            else { 
+            	cb(err)
             }
         }
     );
