@@ -17,11 +17,11 @@ The application also lets you add, edit, and delete movies, as well as see detai
 
 Here's what you'll learn:
 
-*How to create a new express project.
-*How to create routes and views.
-*How to create a new database using the MongoDB and Mongoose.
-*How to retrieve and display data.
-*How to edit data and enable data validation.
+* How to create a new express project.
+* How to create routes and views.
+* How to create a new database using the MongoDB and Mongoose.
+* How to retrieve and display data.
+* How to edit data and enable data validation.
 
 ###Creating Your First Application
 
@@ -119,305 +119,357 @@ Run the application and browse to the HelloWorld controller (http://localhost:30
 
 <img src="https://raw.github.com/paulallies/expressjsintro/master/tutorial/helloworldview.png" />
 
-<p>
-Looks pretty good. However, notice that the big title on the page says "My MVC Application." Let's change those.
-</p>
+Looks pretty good. However, notice that the big title on the page says "My Express Application." Let's change those.
 
-<h3>Changing Views and Layout Pages</h3>
+###Changing Views and Layout Pages
 
-<p>
-    First, you want to change the "My Express Application" title at the top of the page. That text is common to every page. It actually is implemented in only one place in the project, even though it appears on every page in the application. Go to the /Views open the layout.hbs file. This file is called a layout page and it's the shared "shell" that all other pages use.  Layout templates allow you to specify the HTML container layout of your site in one place and then apply it across multiple pages in your site. Note the {{{body}}} line near the bottom of the file. {{{body}}} is a placeholder where all the view-specific pages you create show up, "wrapped" in the layout page. Change the title heading in the layout template from "My Express Application" to "Express Movie App".
-</p>
+First, you want to change the "My Express Application" title at the top of the page. That text is common to every page. It actually is implemented in only one place in the project, even though it appears on every page in the application. Go to the /Views open the layout.hbs file. This file is called a layout page and it's the shared "shell" that all other pages use.  Layout templates allow you to specify the HTML container layout of your site in one place and then apply it across multiple pages in your site. Note the {{{body}}} line near the bottom of the file. {{{body}}} is a placeholder where all the view-specific pages you create show up, "wrapped" in the layout page. Change the title heading in the layout template from "My Express Application" to "Express Movie App".
 
-        <div id="title">
-            <h1>Express Movie App</h1>
-        </div>
+```html
+<div id="title">
+    <h1>Express Movie App</h1>
+</div>
+```
 
-<p>
-Run the application and notice that it now says "Express Movie App". Click the About link, and you see how that page shows "MVC Movie App", too. We were able to make the change once in the layout template and have all pages on the site reflect the new title.
-</p>
+Run the application and notice that it now says "Express Movie App". Click the About link, and you see how that page shows "Express Movie App", too. We were able to make the change once in the layout template and have all pages on the site reflect the new title.
 
-<p>
-    <img src="https://raw.github.com/paulallies/expressjsintro/master/tutorial/about.png" />
-</p>
-<p>
-    The complete layout.hbs file is shown below:
-</p>
+<img src="https://raw.github.com/paulallies/expressjsintro/master/tutorial/about.png" />
 
-        <!doctype html>
-        <html>
-            <head>
-                <title>{{title}} - Express Movie App</title>
-                <link href="/images/favicon.ico" rel="Shortcut Icon" type="image/x-icon">
-                <link rel='stylesheet' href='/stylesheets/style.css' />  
-                <script src="/javascripts/modernizr-1.7.min.js"></script>
-            </head>
-          <body>
-            <div class="page">
-                <header>
-                    <div id="title">
-                        <h1>Express Movie App</h1>
-                    </div>
-                    <div id="logindisplay">
-                            [ <a href="/Account/LogOn">Log On</a> ]
-                    </div>
-                    <nav>
-                        <ul id="menu">
-                            <li><a href="/">Home</a></li>
-                            <li><a href="/Home/About">About</a></li>
-                        </ul>
-                    </nav>
-                </header>
-                <section id="main">
-                    {{{body}}}
-                </section>
-                <footer>
-                </footer>
+The complete layout.hbs file is shown below:
+
+```html
+<!doctype html>
+<html>
+    <head>
+        <title>{{title}} - Express Movie App</title>
+        <link href="/images/favicon.ico" rel="Shortcut Icon" type="image/x-icon">
+        <link rel='stylesheet' href='/stylesheets/style.css' />  
+        <script src="/javascripts/modernizr-1.7.min.js"></script>
+    </head>
+  <body>
+    <div class="page">
+        <header>
+            <div id="title">
+                <h1>Express Movie App</h1>
             </div>
-          </body>
-        </html>
+            <div id="logindisplay">
+                    [ <a href="/Account/LogOn">Log On</a> ]
+            </div>
+            <nav>
+                <ul id="menu">
+                    <li><a href="/">Home</a></li>
+                    <li><a href="/Home/About">About</a></li>
+                </ul>
+            </nav>
+        </header>
+        <section id="main">
+            {{{body}}}
+        </section>
+        <footer>
+        </footer>
+    </div>
+  </body>
+</html>
+```
 
-<h3>Passing Data from the Route to the View</h3>
-<p>
-    Before we go to a database and talk about models, though, let's first talk about passing information from the route to a view. Routers are invoked in response to an incoming URL request. A router is where you write the code that handles the incoming parameters, retrieves data from a database, and ultimately decides what type of response to send back to the browser. View templates can then be used from a router to generate and format an HTML response to the browser.
+###Passing Data from the Route to the View
 
-    routers are responsible for providing whatever data or objects are required in order for a view template to render a response to the browser. A view template should never perform business logic or interact with a database directly. Instead, it should work only with the data that's provided to it by the router. Maintaining this "separation of concerns" helps keep your code clean and more maintainable.
+Before we go to a database and talk about models, though, let's first talk about passing information from the route to a view. Routers are invoked in response to an incoming URL request. A router is where you write the code that handles the incoming parameters, retrieves data from a database, and ultimately decides what type of response to send back to the browser. View templates can then be used from a router to generate and format an HTML response to the browser.
 
-    Currently, the "welcome" function in the helloworld router takes a name and a numTimes parameter and then outputs the values directly to the browser. Rather than have the route render this response as a string, let’s change the route to use a view template instead. The view template will generate a dynamic response, which means that you need to pass appropriate bits of data from the route to the view in order to generate the response. You can do this by having the route put the dynamic data that the view template needs in a object that the view template can then access.
+Routers are responsible for providing whatever data or objects are required in order for a view template to render a response to the browser. A view template should never perform business logic or interact with a database directly. Instead, it should work only with the data that's provided to it by the router. Maintaining this "separation of concerns" helps keep your code clean and more maintainable.
 
-    Return to the helloworld.js route file and change the welcome method to pass a messageCollection to the view.  We fill the messageCollection with a list of objects.
-</p>
+Currently, the "welcome" function in the helloworld router takes a name and a numTimes parameter and then outputs the values directly to the browser. Rather than have the route render this response as a string, let’s change the route to use a view template instead. The view template will generate a dynamic response, which means that you need to pass appropriate bits of data from the route to the view in order to generate the response. You can do this by having the route put the dynamic data that the view template needs in a object that the view template can then access.
+
+Return to the helloworld.js route file and change the welcome method to pass a messageCollection to the view.  We fill the messageCollection with a list of objects.
+
+```javascript
+exports.welcome = function(req, res){
+    var name = req.query.name,
+        numTimes = req.query.numtimes,
+        messageCollection = [];
+
+    for(var i = 0; i < numTimes; i++){
+        messageCollection.push({message: "Hello "+ name});
+    }
+
+    res.render('helloworld/welcome', { 
+        messageCollection: messageCollection
+    });
+};
+
+```
+
+The view then iterates through the collection to build a list.
+
+```html
+<h2>Welcome</h2>
+    <ul> 
+        {{#each messageCollection}}
+            <li>{{message}}</li> 
+        {{/each}}
+</ul>
+```
+
+Run the application and browse to the following URL: http://localhost:3000/HelloWorld/Welcome?name=Scott&numtimes=5.  Now data is taken from the URL and passed to the route automatically. The route packages the data passes that object to the view. The view then displays the data as HTML to the user.
+
+<img src="https://raw.github.com/paulallies/expressjsintro/master/tutorial/helloworldview1.png" />
+
+###Adding a Model
+
+In this section you'll add some code for managing movies in a database. This will be the "model" part of the application.
+
+You’ll use a nodejs data-access technology known as the <a href="http://mongoosejs.com/" target="_blank">mongoose framework</a> to define and work with these model classes. The mongoose framework allows you to create model objects by writing simple classes.  You can then have the database created on the fly from your classes, which enables a very clean and rapid development workflow communication to a <a href="http://www.mongodb.org/" target="_blank">mongodb</a> database.
+
+Lets start by creating a folder called "models" under the project folder.  In this folder we create a file called "movie.js". This will store the model for our movie.
 
 
-        exports.welcome = function(req, res){
-            var name = req.query.name,
-                numTimes = req.query.numtimes,
-                messageCollection = [];
-
-            for(var i = 0; i < numTimes; i++){
-                messageCollection.push({message: "Hello "+ name});
-            }
-
-            res.render('helloworld/welcome', { 
-                messageCollection: messageCollection
-            });
-        };
-<p>
-    The view then iterates through the collection to build a list.
-</p>
-
-    <h2>Welcome</h2>
-        <ul> 
-            {{#each messageCollection}}
-                <li>{{message}}</li> 
-            {{/each}}
-    </ul>
-
-<p>
-    Run the application and browse to the following URL: http://localhost:3000/HelloWorld/Welcome?name=Scott&numtimes=4.  Now data is taken from the URL and passed to the route automatically. The route packages the data passes that object to the view. The view then displays the data as HTML to the user.
-</p>
-
-<p>
-    <img src="https://raw.github.com/paulallies/expressjsintro/master/tutorial/helloworldview1.png" />
-</p>
-
-<h3>Adding a Model</h3>
-<p>
-    In this section you'll add some code for managing movies in a database. This will be the "model" part of the application.
-
-    You’ll use a nodejs data-access technology known as the mongoose framework to define and work with these model classes. The mongoose framework allows you to create model objects by writing simple classes.  You can then have the database created on the fly from your classes, which enables a very clean and rapid development workflow communication to a mongodb database.
-</p>
-
-<p>
-    Lets start by creating a folder called "models" under the project folder.  In this folder we create a file called "movie.js". This will store the model for our movie.
-</p>
-
+```javascript
+module.exports = {
+        title : { type: String},
+        releasedate : { type: Date},
+        genre : { type : String},
+        price : { type: Number},
+        rating: {type: String}
+};
     
-    module.exports = {
-            title : { type: String},
-            releasedate : { type: Date},
-            genre : { type : String},
-            price : { type: Number}
-    };
-<p>
-    We also create a repository file to store all our movie operation methods like getAll and create 
-</p>
-    var mongoose = require("mongoose");
-    var config = require("../config");
+```    
+We also create a repository file to store all our movie operation methods
+
+```javascript
+var mongoose = require("mongoose");
+var config = require("../config");
 
 
-    var schema = mongoose.Schema(require("./movie"));
-    var Movie = mongoose.model('Movie', schema);
+var schema = mongoose.Schema(require("./movie"));
+var Movie = mongoose.model('Movie', schema);
 
-    exports.getAll = function(cb){
-        mongoose.connect(config.moviesConnectionString);
-        Movie.find(
-            function(err, docs) {
-                if (!err){ 
-                    var movieList = [];
-                    for(var d in docs)
-                    {
-                        movieList.push({
-                            title : docs[d].title,
-                            releasedate : docs[d].releasedate,
-                            genre : docs[d].genre,
-                            price : docs[d].price
-                        });
-                    }
-                    cb(movieList);
-                    mongoose.disconnect();
+exports.getAll = function(cb){
+    mongoose.connect(config.moviesConnectionString);
+    Movie.find(
+        function(err, docs) {
+            if (!err){ 
+                var movieList = [];
+                for(var d in docs)
+                {
+                    movieList.push({
+                        title : docs[d].title,
+                        releasedate : docs[d].releasedate,
+                        genre : docs[d].genre,
+                        price : docs[d].price,
+                        rating: docs[d].rating
+                    });
                 }
-                else { 
-                    throw err;
-                }
+                cb(movieList);
+                mongoose.disconnect();
             }
-        );  
-    }
-
-    exports.create = function(movie, cb){
-        mongoose.connect(config.moviesConnectionString);
-        var newMovie = new Movie({ 
-            title: movie.title,  
-            releasedate : movie.releasedate,
-            genre : movie.genre,
-            price : movie.price
-        });
-
-        newMovie.save(function (err) {
-            if (err) {
-                cb(err);
-            }else{
-                cb();
+            else { 
+                throw err;
             }
-            mongoose.disconnect();
-        });
+        }
+    );  
+}
 
-    }
+exports.create = function(movie, cb){
+    mongoose.connect(config.moviesConnectionString);
+    var newMovie = new Movie({ 
+        title : req.body.title,
+        releasedate : req.body.releasedate,
+        genre : req.body.genre,
+        price : req.body.price, 
+        rating: req.body.rating
+    });
 
+    newMovie.save(function (err) {
+        if (err) {
+            cb(err);
+        }else{
+            cb();
+        }
+        mongoose.disconnect();
+    });
+}
+
+```
+
+This file has a lot of important stuff that needs to be explained.  In the repository file we store all the methods that will be used by the routes.  We don't want to store database specific code in the route. So to display a list of movies we would call the "getAll" function and to create a movie we would call the "create" function.  We have refactored the connectionstring into a config file in the root of the project folder where we will store future configuration settings.
+
+Next, you'll build a new movie routes module that your can use to display the movie data and allow users to create new movie listings.  Let's look at the first function of the movie route.  Create a file named movie.js under the routes folder and add the following code:
+
+```javascript
+var movieRepository = require("../models/movierepository");
+
+exports.index = function(req, res){
+    movieRepository.getAll(function(result){
+        res.render("movie/index",{
+            title: "Move List",
+            movies : result
+        }); 
+    });   
+};
+```
+Register the router in the /routes/index.js file by adding the following line:
+
+```javascript
+app.get('/movies', moviesRoutes.index);
+
+```
+The index function renders movie/index view so we need to create a view to display the movie list:
+
+
+```html
+<h2>My Movie List</h2>
 <p>
-    This file has a lot of important stuff that needs to be explained.  In the repository file we store all the methods that will be used by the routes.  We don't want to store database specific code in the route. So to display a list of movies we would call the "getAll" function and to create a movie we would call the "create" function. Note the connection to the database and reference to the movie model in the second and third lines of the repository file.  We have refactored the connectionstring into a config file in the root of the project folder where we will store future configuration settings.
-</p>
-
-<p>
-    Next, you'll build a new movie routes module that your can use to display the movie data and allow users to create new movie listings.  Let's look at the first function of the movie route.  Create a file named movie.js under the routes folder and add the following code:
-</p>
-
-    var movieRepository = require("../models/movierepository");
-
-    exports.index = function(req, res){
-        movieRepository.getAll(function(result){
-            res.render("movie/index",{
-                title: "Move List",
-                movies : result
-            }); 
-        });   
-    };
-
-<p> 
-    Register the router in the /routes/index.js file by adding the following line:
-</p>
-
-        app.get('/movies', moviesRoutes.index);
-
-<p>
-    The index function renders movie/index view so we need to create a view to display the movie list:
-</p>
-    <h2>My Movie List</h2>
-    <p>
-        <a href="/movie/create">Create New</a>
-    </p>
-    <p>
-        <table>
-            <thead>
-                <tr>
-                    <th>Title</th>
-                    <th>Release Date</th>
-                    <th>Genre</th>
-                    <th>Price</th>
-                </tr>
-            </thead>
-            <tbody>
-            {{#each movies}}
-                <tr>
-                    <td>{{title}}</td>
-                    <td>{{releasedate}}</td>
-                    <td>{{genre}}</td>
-                    <td>{{price}}</td>
-                </tr>
-            {{/each}}
-            </tbody>
-        </table>
-    </p>
-<p>
-    Run the application and browse to the movies route by appending /movies to the URL in the address bar of your browser. The browser request http://localhost:3000/movies is routed to the default Index action method of the movies route module. The result is an empty list of movies, because you haven't added any yet.
+    <a href="/movie/create">Create New</a>
 </p>
 <p>
-    <img src="https://raw.github.com/paulallies/expressjsintro/master/tutorial/movielistempty.png" />
+    <table>
+        <thead>
+            <tr>
+                <th></th>
+                <th>Title</th>
+                <th>Release Date</th>
+                <th>Genre</th>
+                <th>Price</th>
+                <th>Rating</th>
+
+            </tr>
+        </thead>
+        <tbody>
+        {{#each movies}}
+            <tr>
+                <td>
+                    <a href="/movie/edit/{{id}}">Edit</a> |
+                    <a href="/movie/details/{{id}}">Details</a> |
+                    <a href="/movie/delete/{{id}}">Delete</a>
+                </td>
+                <td>{{title}}</td>
+                <td>{{releasedate}}</td>
+                <td>{{genre}}</td>
+                <td>{{price}}</td>
+                <td>{{rating}}</td>
+
+            </tr>
+        {{/each}}
+        </tbody>
+    </table>
 </p>
+```
+    
+Run the application and browse to the movies route by appending /movies to the URL in the address bar of your browser. The browser request http://localhost:3000/movies is routed to the default Index action method of the movies route module. The result is an empty list of movies, because you haven't added any yet.  Note the "Create New" link in the movie list view. 
+
+<img src="https://raw.github.com/paulallies/expressjsintro/master/tutorial/movielistempty.png" />
+
+To add some movies to the database we need a create view.  Create a new file under the movie view folder and call it create.hbs.  The file will have the following html
+
+```html
+<form action="/movie/create" method="post">    
+    <div>
+        <fieldset>
+            <legend>Create Movie</legend>
+
+            <div class="editor-label">
+                <label for="title">Title</label>
+            </div>
+            <div class="editor-field">
+                <input id="title" name="title" type="text"/>
+            </div>
+
+            <div class="editor-label">
+                <label for="releasedate">Release Date</label>
+            </div>
+            <div class="editor-field">
+                <input id="releasedate" name="releasedate" type="text" />
+            </div>
+
+            <div class="editor-label">
+                <label for="genre">Genre</label>
+            </div>
+            <div class="editor-field">
+                <input id="genre" name="genre" type="text" />
+            </div>
+
+            <div class="editor-label">
+                <label for="price">Price</label>
+            </div>
+            <div class="editor-field">
+                <input id="price" name="price" type="text" />
+            </div>
+            
+            <div class="editor-label">
+                <label for="rating">Rating</label>
+            </div>
+            <div class="editor-field">
+                <input id="rating" name="rating" type="text" />
+            </div>
+
+            <p>
+                <input type="submit" value="Create" />
+            </p>
+        </fieldset>
+    </div>
+</form>
 
 <p>
-    To add some movies to the database we need a create view.  Create a new file under the movie view folder and call it create.hbs.  The file will have the following html
+    <a href="/movies">Back to List</a>
 </p>
-
-    <form action="/movie/create" method="post">    
-        <div>
-            <fieldset>
-                <legend>Create Movie</legend>
-
-                <div class="editor-label">
-                    <label for="title">Title</label>
-                </div>
-                <div class="editor-field">
-                    <input id="title" name="title" type="text"/>
-                </div>
-
-                <div class="editor-label">
-                    <label for="releasedate">Release Date</label>
-                </div>
-                <div class="editor-field">
-                    <input id="releasedate" name="releasedate" type="text" />
-                </div>
-
-                <div class="editor-label">
-                    <label for="genre">Genre</label>
-                </div>
-                <div class="editor-field">
-                    <input id="genre" name="genre" type="text" />
-                </div>
-
-                <div class="editor-label">
-                    <label for="price">Price</label>
-                </div>
-                <div class="editor-field">
-                    <input id="price" name="price" type="text" />
-                </div>
-
-                <p>
-                    <input type="submit" value="Create" />
-                </p>
-            </fieldset>
-        </div>
-    </form>
+```
 
 We must now create another route in our movie route to render this view
 
-    exports.create = function(req, res){
-        if(req.method == "GET"){
-            res.render("movie/create", { title: "Create"});
-        }
+```javascript
+exports.create = function(req, res){
+    if(req.method == "GET"){
+        res.render("movie/create", { title: "Create"});
     }
+}
+```
 
-<p>We must also register the route in the routes/index.js file</p>
+We must also register the route in the routes/index.js file
 
-    app.get('/movie/create', moviesRoutes.create);
+```javascript
+app.get('/movie/create', moviesRoutes.create);
 
-<p>
-    Now when we run the application and browse to http://localhost:3000/movie/create we see the following
-</p>
+```
 
-<p>
-    <img src="https://raw.github.com/paulallies/expressjsintro/master/tutorial/moviecreate.png" />
-</p>
+###Creating a Movie
+
+Select the Create New link. Enter some details about a movie and then click the Create button.
+
+
+<img src="https://raw.github.com/paulallies/expressjsintro/master/tutorial/moviecreate.png" />
+
+Clicking the Create button causes the form to be posted to the server, where the movie information is saved in the database. You're then redirected to the /Movies URL, where you can see the newly created movie in the listing.
+
+<img src="https://raw.github.com/paulallies/expressjsintro/master/tutorial/movielist1.png" />
+
+Lets look at the code that which made it possible to take a information from a posted form, add it to the database and redirect to the movie list to display the result.
+
+To handle the movie/create post we had to add another function to the "routes/movie.js" route module:
+
+```javascript
+exports.add  = function(req, res){
+    var newMovie = {
+        title : req.body.title,
+        releasedate : req.body.releasedate,
+        genre : req.body.genre,
+        price : req.body.price, 
+        rating: req.body.rating
+    };
+
+    movieRepository.create(newMovie, function(){
+        res.redirect("movies")
+    });
+}
+```
+
+We also had to register this function in the routes/index.js file:
+
+```javascript
+app.post('/movie/create', moviesRoutes.add);
+```
+
+
+
 
 
 
