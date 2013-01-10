@@ -1,0 +1,52 @@
+{{#movie}}
+<form action="/movie/edit" method="post">    
+    <div>
+        <fieldset>
+            <legend>Update Movie</legend>
+
+            <div class="editor-label">
+                <label for="title">Title</label>
+            </div>
+            <div class="editor-field">
+                <input id="title" name="title" type="text" value="{{title}}"/>
+            </div>
+
+            <div class="editor-label">
+                <label for="releasedate">Release Date</label>
+            </div>
+            <div class="editor-field">
+                <input id="releasedate" name="releasedate" type="text" value="{{releasedate}}" />
+            </div>
+
+            <div class="editor-label">
+                <label for="genre">Genre</label>
+            </div>
+            <div class="editor-field">
+                <input id="genre" name="genre" type="text" value="{{genre}}" />
+            </div>
+
+            <div class="editor-label">
+                <label for="price">Price</label>
+            </div>
+            <div class="editor-field">
+                <input id="price" name="price" type="text" value="{{price}}" />
+            </div>
+            
+            <div class="editor-label">
+                <label for="rating">Rating</label>
+            </div>
+            <div class="editor-field">
+                <input id="rating" name="rating" type="text" value="{{rating}}" />
+            </div>
+
+            <p>
+                <input type="submit" value="Update" />
+            </p>
+        </fieldset>
+    </div>
+</form>
+{{/movie}}
+
+<p>
+    <a href="/movies">Back to List</a>
+</p>

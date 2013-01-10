@@ -34,11 +34,15 @@ exports.details = function(req, res){
 }
 
 exports.delete = function(req, res){
-	res.render("movie/delete", { title: "Delete"});
+	movieRepository.delete(req.params.id, function(){
+		res.redirect("movies");		
+	});
 }
 
 exports.edit = function(req, res){
-	res.render("movie/edit", { title: "Edit"});
+	movieRepository.getMovie(req.params.id, function(movie){
+		res.render("movie/edit", { title: "Edit", movie : movie});
+	});
 }
 
 
