@@ -1,8 +1,18 @@
 var config = require("../config");
 var mongoose = require("mongoose");
 
+function validator (val) {
+  return val == 'something';
+}
 
 var schema = mongoose.Schema(require("./movie")),
+// var schema = new mongoose.Schema({
+// 		title : { type: String, validate: function(val){ return false;}},
+//         releasedate : { type: Date, required: true, trim: true},
+//         genre : { type : String, trim: true, required : true},
+//         price : { type: Number, trim: true, required: true }, 
+//         rating: {type: String,  uppercase: true, enum: ['PG', 'R'], trim: true}
+//     }),
 	Movie = mongoose.model('Movie', schema);
 
 exports.getAll = function (cb) {
@@ -60,18 +70,27 @@ exports.create = function(movie, cb){
 		releasedate : movie.releasedate,
 		genre : movie.genre,
 		price : movie.price,
-		rating: movie.rating.toUpperCase()
+		rating: movie.rating
 	});
 
-	newMovie.save(function (err) {
-		mongoose.connection.close();
-		if (err) {
-	  		cb(err);
-	  	}else{
-	  		cb();
+	newMovie.validate(function(err){
+		if(err) {
+			mongoose.connection.close(); 
+			cb(err);
+		}else{
+			newMovie.save(function (err) {
+				mongoose.connection.close();
+				if (err) {
+			  		cb(err);
+			  	}else{
+			  		cb();
+				}
+				
+			});
 		}
-		
 	});
+
+	
 }
 
 exports.delete = function(id, cb){
@@ -93,22 +112,40 @@ exports.edit = function(movie, cb){
 	mongoose.connect(config.moviesConnectionString);
 
 	var updatedMovie = new Movie({
-		_id : mongoose.Schema.Types.ObjectId(movie.id),
+		id: movie.id,
 		title: movie.title,  
 		releasedate : movie.releasedate,
 		genre : movie.genre,
 		price : movie.price,
-		rating: movie.rating.toUpperCase()
+		rating: movie.rating
 	});
 
-	updatedMovie.save(function(err) {
-        	mongoose.connection.close();
-        	if (!err){ 
-               	cb();
-            }
-            else { 
-            	cb(err)
-            }
-        }
-    );
+	updatedMovie.validate(function(err){
+		if(err) {
+			mongoose.connection.close(); 
+			cb(err);
+		}else{
+			Movie.findByIdAndUpdate(
+				movie.id, 
+				{ 
+					title: movie.title,
+					releasedate : movie.releasedate,
+					genre : movie.genre,
+					price : movie.price,
+					rating: movie.rating
+				}, 
+				function(err){
+			    	mongoose.connection.close();
+			    	if (!err){ 
+			           	cb();
+			        }
+			        else { 
+			        	cb(err)
+			        }
+				}
+			);
+		}
+	});
+
+
 }

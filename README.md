@@ -3,7 +3,6 @@ This tutorial will teach you the basics of building a nodejs MVC Web application
 ###What You'll Build
 
 
-
 You'll implement a simple movie-listing application that supports creating, editing, and listing movies from a database. Below are two screenshots of the application you’ll build. It includes a page that displays a list of movies from a database: 
 
 <img src="https://raw.github.com/paulallies/expressjsintro/master/tutorial/MovieList.png" />
@@ -225,13 +224,12 @@ Lets start by creating a folder called "models" under the project folder.  In th
 
 ```javascript
 module.exports = {
-        title : { type: String},
-        releasedate : { type: Date},
-        genre : { type : String},
-        price : { type: Number},
-        rating: {type: String}
+        title : { type: String, required: true, trim: true},
+        releasedate : { type: Date, required: true, trim: true},
+        genre : { type : String, trim: true, required : true},
+        price : { type: Number, trim: true, required: true }, 
+        rating: {type: String,  uppercase: true, enum: ['PG', 'R'], trim: true}
 };
-    
 ```    
 We also create a repository file to store all our movie operation methods
 

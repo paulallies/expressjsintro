@@ -18,4 +18,5 @@ exports.registerRoutes = function(app){
     app.get('/movie/details/:id', moviesRoutes.details);
     app.get('/movie/delete/:id', moviesRoutes.delete);
     app.get('/movie/edit/:id', moviesRoutes.edit);
+    app.post('/movie/edit', moviesRoutes.update);
 }

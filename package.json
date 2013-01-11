@@ -11,6 +11,7 @@
     "hbs": "*",
     "mongoose": "*",
     "mocha": "*",
-    "should" : "*"
+    "should" : "*",
+    "validator" : "*"
   }
 }

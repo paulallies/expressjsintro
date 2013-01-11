@@ -2,40 +2,53 @@
     <div>
         <fieldset>
             <legend>Create Movie</legend>
+           
+           {{#validation}}
+            <h4 style="color:red">Validation Error</h4>
+           {{/validation}}
+
+           {{#movie}}<input id="id" name="id" type="hidden" value="{{title}}" />{{/movie}}
 
             <div class="editor-label">
                 <label for="title">Title</label>
             </div>
             <div class="editor-field">
-                <input id="title" name="title" type="text"/>
+                <input id="title" name="title" type="text" {{#movie}}value="{{title}}"{{/movie}} />
+                {{#validation}}<span style="color:red">{{errors.title.type}}</span>{{/validation}}
             </div>
 
             <div class="editor-label">
                 <label for="releasedate">Release Date</label>
             </div>
             <div class="editor-field">
-                <input id="releasedate" name="releasedate" type="text" />
+                <input id="releasedate" name="releasedate" type="text" {{#movie}}value="{{releasedate}}"{{/movie}}/>
+                {{#validation}}<span style="color:red">{{errors.releasedate.type}}</span>{{/validation}}
             </div>
 
             <div class="editor-label">
                 <label for="genre">Genre</label>
             </div>
             <div class="editor-field">
-                <input id="genre" name="genre" type="text" />
+                <input id="genre" name="genre" type="text" {{#movie}}value="{{genre}}"{{/movie}} />
+                {{#validation}}<span style="color:red">{{errors.genre.type}}</span>{{/validation}}
+
             </div>
 
             <div class="editor-label">
                 <label for="price">Price</label>
             </div>
             <div class="editor-field">
-                <input id="price" name="price" type="text" />
+                <input id="price" name="price" type="text" {{#movie}}value="{{price}}"{{/movie}}/>
+                  {{#validation}}<span style="color:red">{{errors.price.type}}</span>{{/validation}}
             </div>
             
             <div class="editor-label">
                 <label for="rating">Rating</label>
             </div>
             <div class="editor-field">
-                <input id="rating" name="rating" type="text" />
+                <input id="rating" name="rating" type="text" {{#movie}}value="{{rating}}"{{/movie}} />
+                  {{#validation}}<span style="color:red">{{errors.rating.type}}</span>{{/validation}}
+                
             </div>
 
             <p>
@@ -48,3 +61,12 @@
 <p>
     <a href="/movies">Back to List</a>
 </p>
+
+<script type="text/javascript">
+  $(function() {
+    $( "#releasedate" ).datepicker({
+      changeMonth: true,
+      changeYear: true
+    });
+  });
+</script>
