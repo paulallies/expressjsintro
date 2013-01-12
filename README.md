@@ -484,10 +484,10 @@ exports.edit = function(req, res){
 };
 ```
 
-As can be seen this function fetches a movie using the getMovie function from the movieRepository by passing the id of the movie to the function.  Once the movie is fetched we render the movie in the `movie/edit.hbs` view.  The code for the edit view is as follows:
+As can be seen this function fetches a movie using the getMovie function from the movieRepository by passing the id of the movie to the function.  Once the movie is fetched we render the movie using the `movie/edit.hbs` view.  The code for the edit view is as follows:
 
 ```html
-    <form action="/movie/edit" method="post">    
+<form action="/movie/edit" method="post">    
     <div>
         <fieldset>
             <legend>Update Movie</legend>
