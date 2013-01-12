@@ -472,7 +472,79 @@ When we click on the edit link in the movie list we need to route through to the
 
 ```javascript
 app.get('/movie/edit/:id', moviesRoutes.edit);
+```
+
+After doing this we need to add the edit method to the `routes/movie.js` file:
+
+```javascript
+exports.edit = function(req, res){
+    movieRepository.getMovie(req.params.id, function(movie){
+        res.render("movie/edit", { title: "Edit", movie : movie});
+    });
+};
+```
+
+As can be seen this function fetches a movie using the getMovie function from the movieRepository by passing the id of the movie to the function.  Once the movie is fetched we render the movie in the `movie/edit.hbs` view.  The code for the edit view is as follows:
+
+```html
+    <form action="/movie/edit" method="post">    
+    <div>
+        <fieldset>
+            <legend>Update Movie</legend>
+
+            {{#movie}}<input type="hidden" name="id" id="id" value="{{id}}" />{{/movie}}
+
+            <div class="editor-label">
+                <label for="title">Title</label>
+            </div>
+            <div class="editor-field">
+                <input id="title" name="title" type="text" {{#movie}}value="{{title}}"{{/movie}}/>
+            </div>
+
+            <div class="editor-label">
+                <label for="releasedate">Release Date</label>
+            </div>
+            <div class="editor-field">
+                <input id="releasedate" name="releasedate" type="text" {{#movie}}value="{{releasedate}}"{{/movie}} />
+            </div>
+
+            <div class="editor-label">
+                <label for="genre">Genre</label>
+            </div>
+            <div class="editor-field">
+                <input id="genre" name="genre" type="text" {{#movie}}value="{{genre}}"{{/movie}} />
+            </div>
+
+            <div class="editor-label">
+                <label for="price">Price</label>
+            </div>
+            <div class="editor-field">
+                <input id="price" name="price" type="text" {{#movie}}value="{{price}}"{{/movie}} />
+
+            </div>
+            
+            <div class="editor-label">
+                <label for="rating">Rating</label>
+            </div>
+            <div class="editor-field">
+                <input id="rating" name="rating" type="text" {{#movie}}value="{{rating}}"{{/movie}} />
+            </div>
+
+            <p>
+                <input type="submit" value="Update" />
+            </p>
+        </fieldset>
+    </div>
+</form>
+
+<p>
+    <a href="/movies">Back to List</a>
+</p>
+
 ```    
+and will render this
+
+<img src="https://raw.github.com/paulallies/expressjsintro/master/tutorial/movieedit.png" />
 
 
 
