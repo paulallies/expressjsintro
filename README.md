@@ -466,6 +466,15 @@ We also had to register this function in the routes/index.js file:
 app.post('/movie/create', moviesRoutes.add);
 ```
 
+###Editing a Movie
+
+When we click on the edit link in the movie list we need to route through to the movie/edit view.  So lets add a route to the `routes/index.js` 
+
+```javascript
+app.get('/movie/edit/:id', moviesRoutes.edit);
+```    
+
+
 
 
 

@@ -7,21 +7,43 @@ Validator.prototype.error = function (err_msg) {
 };
 
 var validateLength = function(val){
-	return validate.check(val).len(2, 10); 
-};
-
-var validateEmail =	function(val){
-	return validate.check(val).isEmail(); 
+	return validate.check(val).len(2, 50); 
 };
 
 var titleValidate = [
-    { validator: validateLength, msg: 'String must be between 2 and 10 characters in length'}
-]
+    { validator: validateLength, msg: 'Title must be between 2 and 50 characters in length'}
+
+];
+
+var priceValidate = [
+    { 
+    	validator: function(val){
+			var minval = 1;
+			var maxval = 100;
+			return validate.check(val).min(minval) && validate.check(val).max(maxval);
+		}, 
+		msg: 'Price must be between $1 and $100'
+	}
+];
+
+var validateRating = function(val){
+
+};
+
+var ratingValidate = [
+	{
+    	validator: function(val){
+			var ratingArray = ["PG", "R", "R16", "R18", "PG13"];
+			return ratingArray.indexOf(val) > -1;
+		}, 
+		msg: "Rating must be 'PG', 'R16', 'R18', 'R' or 'PG13' "
+	}
+];
 
 module.exports = {
         title : { type: String, required: true, validate: titleValidate},
-        releasedate : { type: Date, required: true, trim: true},
-        genre : { type : String, trim: true, required : true},
-        price : { type: Number, trim: true, required: true }, 
-        rating: {type: String,  uppercase: true, enum: ['PG', 'R'], trim: true }
+        releasedate : { type: Date ,  required: true},
+        genre : { type : String, required : true},
+        price : { type: Number, required: true, validate : priceValidate }, 
+        rating: {type: String,  uppercase: true, validate : ratingValidate}
 };

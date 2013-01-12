@@ -13,7 +13,7 @@
                 <label for="title">Title</label>
             </div>
             <div class="editor-field">
-                <input id="title" name="title" type="text" {{#movie}}value="{{title}}"{{/movie}} />
+                <input id="title" {{#validation.errors.title}}class="input-validation-error"{{/validation.errors.title}} name="title" type="text" {{#movie}}value="{{title}}"{{/movie}} />
                 {{#validation}}<span style="color:red">{{errors.title.type}}</span>{{/validation}}
             </div>
 
@@ -21,7 +21,7 @@
                 <label for="releasedate">Release Date</label>
             </div>
             <div class="editor-field">
-                <input id="releasedate" name="releasedate" type="text" {{#movie}}value="{{releasedate}}"{{/movie}}/>
+                <input id="releasedate" {{#validation.errors.releasedate}}class="input-validation-error"{{/validation.errors.releasedate}} name="releasedate" type="text" {{#movie}}value="{{releasedate}}"{{/movie}}/>
                 {{#validation}}<span style="color:red">{{errors.releasedate.type}}</span>{{/validation}}
             </div>
 
@@ -29,7 +29,7 @@
                 <label for="genre">Genre</label>
             </div>
             <div class="editor-field">
-                <input id="genre" name="genre" type="text" {{#movie}}value="{{genre}}"{{/movie}} />
+                <input id="genre" {{#validation.errors.genre}}class="input-validation-error"{{/validation.errors.genre}} name="genre" type="text" {{#movie}}value="{{genre}}"{{/movie}} />
                 {{#validation}}<span style="color:red">{{errors.genre.type}}</span>{{/validation}}
 
             </div>
@@ -38,7 +38,7 @@
                 <label for="price">Price</label>
             </div>
             <div class="editor-field">
-                <input id="price" name="price" type="text" {{#movie}}value="{{price}}"{{/movie}}/>
+                <input id="price" name="price" {{#validation.errors.price}}class="input-validation-error"{{/validation.errors.price}} type="text" {{#movie}}value="{{price}}"{{/movie}}/>
                   {{#validation}}<span style="color:red">{{errors.price.type}}</span>{{/validation}}
             </div>
             
@@ -46,7 +46,7 @@
                 <label for="rating">Rating</label>
             </div>
             <div class="editor-field">
-                <input id="rating" name="rating" type="text" {{#movie}}value="{{rating}}"{{/movie}} />
+                <input id="rating" name="rating" {{#validation.errors.rating}}class="input-validation-error"{{/validation.errors.rating}} type="text" {{#movie}}value="{{rating}}"{{/movie}} />
                   {{#validation}}<span style="color:red">{{errors.rating.type}}</span>{{/validation}}
                 
             </div>
