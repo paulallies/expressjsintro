@@ -22,9 +22,10 @@ exports.add  = function(req, res){
 		rating: req.body.rating
 	};
 
-	movieRepository.create(newMovie, function(err){
+	movieRepository.create(newMovie, function(err, validationerr){
 		if(err){
-			console.log(err);
+			res.render("home/error", {error: err});
+		}else if(validationerr){
 			res.render("movie/create", { title: "Create", movie : newMovie, validation: err});
 		}else{
 			res.redirect("movies");
@@ -60,9 +61,10 @@ exports.update = function(req, res){
 		rating: req.body.rating
 	};
 
-	movieRepository.edit(updatedMovie, function(err){
+	movieRepository.edit(updatedMovie, function(err, validationerr){
 		if(err){
-			console.log(err);
+			res.render("home/error", {error: err});
+		}else if(validationerr){
 			res.render("movie/edit", { title: "Edit", movie : updatedMovie, validation: err});
 		}else{
 			res.redirect("movies");

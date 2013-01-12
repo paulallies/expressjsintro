@@ -546,6 +546,34 @@ and will render this
 
 <img src="https://raw.github.com/paulallies/expressjsintro/master/tutorial/movieedit.png" />
 
+Clicking the update button will post this form to the '/movie/edit' route.  So lets add this route to the `/routes/index.js` file
+
+```javascript
+    app.post('/movie/edit', moviesRoutes.update);
+```
+and we must add the update function to the `/routes/movie.js`
+
+```javascript
+exports.update = function(req, res){
+    var updatedMovie = {
+        id: req.body.id,
+        title : req.body.title,
+        releasedate : new Date(req.body.releasedate),
+        genre : req.body.genre,
+        price : req.body.price, 
+        rating: req.body.rating
+    };
+
+    movieRepository.edit(updatedMovie, function(err){
+        if(err){
+            res.render("movie/edit", { title: "Edit", movie : updatedMovie, validation: err});
+        }else{
+            res.redirect("movies");
+        }
+    })
+}
+```
+
 
 
 

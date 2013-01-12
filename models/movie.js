@@ -45,5 +45,5 @@ module.exports = {
         releasedate : { type: Date ,  required: true},
         genre : { type : String, required : true},
         price : { type: Number, required: true, validate : priceValidate }, 
-        rating: {type: String,  uppercase: true, validate : ratingValidate}
+        rating: {type: String,  uppercase: true, required: true, validate : ratingValidate}
 };

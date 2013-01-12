@@ -73,10 +73,10 @@ exports.create = function(movie, cb){
 		rating: movie.rating
 	});
 
-	newMovie.validate(function(err){
-		if(err) {
+	newMovie.validate(function(validationerr){
+		if(validationerr) {
 			mongoose.connection.close(); 
-			cb(err);
+			cb(null, validationerr);
 		}else{
 			newMovie.save(function (err) {
 				mongoose.connection.close();
@@ -120,10 +120,10 @@ exports.edit = function(movie, cb){
 		rating: movie.rating
 	});
 
-	updatedMovie.validate(function(err){
-		if(err) {
+	updatedMovie.validate(function(validationerr){
+		if(validationerr) {
 			mongoose.connection.close(); 
-			cb(err);
+			cb(null, validationerr);
 		}else{
 			Movie.findByIdAndUpdate(
 				movie.id, 
