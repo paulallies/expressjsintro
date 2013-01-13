@@ -959,6 +959,11 @@ Add the view `movie/details.hbs` view:
 </p>
 ```
 
+The details view will render as follows:
+
+
+<img src="https://raw.github.com/paulallies/expressjsintro/master/tutorial/moviedetails.png" />
+
 
 
 
