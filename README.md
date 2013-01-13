@@ -871,6 +871,98 @@ and for the edit view with validation looks very similar
     <a href="/movies">Back to List</a>
 </p>
 ```
+###Movie Details
+
+Add the route to `routes/index.js`: 
+
+```js
+    app.get('/movie/details/:id', moviesRoutes.details);
+```
+
+Add the details function to the 'routes/movie.js':
+
+```js
+exports.details = function(req, res){
+    movieRepository.getMovie(req.params.id, function(movie){
+        res.render("movie/details", { title: "Details", movie : movie});
+    });
+}
+```
+
+Add the getMovie function to the `models/movierepository.js`:
+
+```js
+exports.getMovie = function(id, cb){
+    mongoose.connect(config.moviesConnectionString);
+    Movie.findOne({ _id : id},
+        function(err, doc) {
+            mongoose.connection.close();
+            if (!err){ 
+                cb({
+                        id : doc._id,
+                        title : doc.title,
+                        releasedate : (new Date(doc.releasedate)).toDateString(),
+                        genre : doc.genre,
+                        price : doc.price,
+                        rating: doc.rating
+                });
+            }
+            else { 
+                throw err;
+            }
+        }
+    );  
+}
+```
+
+Add the view `movie/details.hbs` view:
+
+```html
+<div>
+    <fieldset>
+        <legend>Movie Details</legend>
+    {{#movie}}
+        <div class="editor-label">
+            <label for="title">Title:</label>
+        </div>
+        <div class="editor-field">
+            <span>{{title}}</span>
+        </div>
+
+        <div class="editor-label">
+            <label for="releasedate">Release Date:</label>
+        </div>
+        <div class="editor-field">
+            <label id="releasedate" >{{releasedate}}</label>
+        </div>
+
+        <div class="editor-label">
+            <label for="genre">Genre:</label>
+        </div>
+        <div class="editor-field">
+            <label id="genre">{{genre}}</label>
+        </div>
+
+        <div class="editor-label">
+            <label for="price">Price:</label>
+        </div>
+        <div class="editor-field">
+            <label id="price" >{{price}}</label 
+        </div>
+    {{/movie}}
+
+    </fieldset>
+</div>
+
+<p>
+    <a href="/movies">Back to Movie List</a>
+</p>
+```
+
+
+
+
+
 
 
 
