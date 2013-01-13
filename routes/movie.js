@@ -26,7 +26,7 @@ exports.add  = function(req, res){
 		if(err){
 			res.render("home/error", {error: err});
 		}else if(validationerr){
-			res.render("movie/create", { title: "Create", movie : newMovie, validation: err});
+			res.render("movie/create", { title: "Create", movie : newMovie, validation: validationerr});
 		}else{
 			res.redirect("movies");
 		}
@@ -65,7 +65,7 @@ exports.update = function(req, res){
 		if(err){
 			res.render("home/error", {error: err});
 		}else if(validationerr){
-			res.render("movie/edit", { title: "Edit", movie : updatedMovie, validation: err});
+			res.render("movie/edit", { title: "Edit", movie : updatedMovie, validation: validationerr});
 		}else{
 			res.redirect("movies");
 		}

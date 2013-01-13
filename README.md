@@ -648,8 +648,234 @@ exports.edit = function(movie, cb){
 
 In the code above, the movie is validated and updated.
 
+###Deleting a Movie
 
+The delete link in the movie list view routes to a `movie/delete/{id}`.  This is added to the `routes/index.js` file
 
+```js
+    app.get('/movie/delete/:id', moviesRoutes.delete);
+```
+
+The delete function in the `routes/movies.js` file handles the request:
+
+```js
+exports.delete = function(req, res){
+    movieRepository.delete(req.params.id, function(){
+        res.redirect("movies");     
+    });
+}
+```
+
+which in turn executes the delete function in the `models/moviereposistory.js`:
+
+```js
+exports.delete = function(id, cb){
+    mongoose.connect(config.moviesConnectionString);
+    Movie.remove({ _id : id},
+        function(err, doc) {
+            mongoose.connection.close();
+            if (!err){ 
+                cb();
+            }
+            else { 
+                throw err;
+            }
+        }
+    );
+}
+```
+
+###Validation
+
+Let's talk a little about validation.  In the project we choose to do validation of movie data on create and update.  The following is the code for the movie model.
+
+```js
+
+var Validator = require('validator').Validator;
+var validate = new Validator();
+
+Validator.prototype.error = function (err_msg) {
+    return false;
+};
+
+var validateLength = function(val){
+    return validate.check(val).len(2, 50); 
+};
+
+var titleValidate = [
+    { validator: validateLength, msg: 'Title must be between 2 and 50 characters in length'}
+
+];
+
+var priceValidate = [
+    { 
+        validator: function(val){
+            var minval = 1;
+            var maxval = 100;
+            return validate.check(val).min(minval) && validate.check(val).max(maxval);
+        }, 
+        msg: 'Price must be between $1 and $100'
+    }
+];
+
+var validateRating = function(val){
+
+};
+
+var ratingValidate = [
+    {
+        validator: function(val){
+            var ratingArray = ["PG", "R", "R16", "R18", "PG13"];
+            return ratingArray.indexOf(val) > -1;
+        }, 
+        msg: "Rating must be 'PG', 'R16', 'R18', 'R' or 'PG13' "
+    }
+];
+
+module.exports = {
+        title : { type: String, required: true, validate: titleValidate},
+        releasedate : { type: Date ,  required: true},
+        genre : { type : String, required : true},
+        price : { type: Number, required: true, validate : priceValidate }, 
+        rating: {type: String,  uppercase: true, required: true, validate : ratingValidate}
+};
+```
+
+In the movie model add different validators to each model property.  To assist us we use the node-validator npm module.  For more information about mongoose validation <a target="_blank" href="http://mongoosejs.com/docs/api.html#schematype_SchemaType-validate">click here</a> and node-validator <a target="_blank" href="https://github.com/chriso/node-validator">click here</a>
+
+So on create and update we can call the `.validate` method on the model and it will return validation errors if any of the validation specs have failed.  We call the validate methods from the movierepository and validation are then passed to the create and modify routes.  The validaton errors are then passed from the route to the views so that the user can view validation errors in the view.  Let's show the create view with validation html.
+
+```html
+<form action="/movie/create" method="post">    
+    <div>
+        <fieldset>
+            <legend>Create Movie</legend>
+           
+           {{#validation}}
+            <h4 style="color:red">Validation Error</h4>
+           {{/validation}}
+
+           {{#movie}}<input id="id" name="id" type="hidden" value="{{title}}" />{{/movie}}
+
+            <div class="editor-label">
+                <label for="title">Title</label>
+            </div>
+            <div class="editor-field">
+                <input id="title" {{#validation.errors.title}}class="input-validation-error"{{/validation.errors.title}} name="title" type="text" {{#movie}}value="{{title}}"{{/movie}} />
+                {{#validation}}<span style="color:red">{{errors.title.type}}</span>{{/validation}}
+            </div>
+
+            <div class="editor-label">
+                <label for="releasedate">Release Date</label>
+            </div>
+            <div class="editor-field">
+                <input id="releasedate" {{#validation.errors.releasedate}}class="input-validation-error"{{/validation.errors.releasedate}} name="releasedate" type="text" {{#movie}}value="{{releasedate}}"{{/movie}}/>
+                {{#validation}}<span style="color:red">{{errors.releasedate.type}}</span>{{/validation}}
+            </div>
+
+            <div class="editor-label">
+                <label for="genre">Genre</label>
+            </div>
+            <div class="editor-field">
+                <input id="genre" {{#validation.errors.genre}}class="input-validation-error"{{/validation.errors.genre}} name="genre" type="text" {{#movie}}value="{{genre}}"{{/movie}} />
+                {{#validation}}<span style="color:red">{{errors.genre.type}}</span>{{/validation}}
+
+            </div>
+
+            <div class="editor-label">
+                <label for="price">Price</label>
+            </div>
+            <div class="editor-field">
+                <input id="price" name="price" {{#validation.errors.price}}class="input-validation-error"{{/validation.errors.price}} type="text" {{#movie}}value="{{price}}"{{/movie}}/>
+                  {{#validation}}<span style="color:red">{{errors.price.type}}</span>{{/validation}}
+            </div>
+            
+            <div class="editor-label">
+                <label for="rating">Rating</label>
+            </div>
+            <div class="editor-field">
+                <input id="rating" name="rating" {{#validation.errors.rating}}class="input-validation-error"{{/validation.errors.rating}} type="text" {{#movie}}value="{{rating}}"{{/movie}} />
+                  {{#validation}}<span style="color:red">{{errors.rating.type}}</span>{{/validation}}
+                
+            </div>
+
+            <p>
+                <input type="submit" value="Create" />
+            </p>
+        </fieldset>
+    </div>
+</form>
+
+<p>
+    <a href="/movies">Back to List</a>
+</p>
+```
+
+and for the edit view with validation looks very similar
+
+```html
+<form action="/movie/edit" method="post">    
+    <div>
+        <fieldset>
+            <legend>Update Movie</legend>
+
+           {{#validation}}
+                <h4 style="color:red">Validation Error</h4>
+           {{/validation}}
+            
+            {{#movie}}<input type="hidden" name="id" id="id" value="{{id}}" />{{/movie}}
+
+            <div class="editor-label">
+                <label for="title">Title</label>
+            </div>
+            <div class="editor-field">
+                <input id="title"  {{#validation.errors.title}}class="input-validation-error"{{/validation.errors.title}} name="title" type="text" {{#movie}}value="{{title}}"{{/movie}}/>
+                 {{#validation}}<span style="color:red">{{errors.title.type}}</span>{{/validation}}
+            </div>
+
+            <div class="editor-label">
+                <label for="releasedate">Release Date</label>
+            </div>
+            <div class="editor-field">
+                <input id="releasedate" {{#validation.errors.releasedate}}class="input-validation-error"{{/validation.errors.releasedate}} name="releasedate" type="text" {{#movie}}value="{{releasedate}}"{{/movie}} />
+                {{#validation}}<span style="color:red">{{errors.releasedate.type}}</span>{{/validation}}
+            </div>
+
+            <div class="editor-label">
+                <label for="genre">Genre</label>
+            </div>
+            <div class="editor-field">
+                <input id="genre" {{#validation.errors.genre}}class="input-validation-error"{{/validation.errors.genre}} name="genre" type="text" {{#movie}}value="{{genre}}"{{/movie}} />
+                  {{#validation}}<span style="color:red">{{errors.genre.type}}</span>{{/validation}}
+            </div>
+
+            <div class="editor-label">
+                <label for="price">Price</label>
+            </div>
+            <div class="editor-field">
+                <input id="price" {{#validation.errors.price}}class="input-validation-error"{{/validation.errors.price}} name="price" type="text" {{#movie}}value="{{price}}"{{/movie}} />
+                {{#validation}}<span style="color:red">{{errors.price.type}}</span>{{/validation}}
+            </div>
+            
+            <div class="editor-label">
+                <label for="rating">Rating</label>
+            </div>
+            <div class="editor-field">
+                <input id="rating" {{#validation.errors.rating}}class="input-validation-error"{{/validation.errors.rating}} name="rating" type="text" {{#movie}}value="{{rating}}"{{/movie}} />
+                {{#validation}}<span style="color:red">{{errors.rating.message}}</span>{{/validation}}
+            </div>
+
+            <p>
+                <input type="submit" value="Update" />
+            </p>
+        </fieldset>
+    </div>
+</form>
+
+<p>
+    <a href="/movies">Back to List</a>
+</p>
+```
 
 
 
