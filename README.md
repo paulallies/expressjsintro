@@ -691,6 +691,7 @@ Let's talk a little about validation.  In the project we choose to do validation
 
 ```js
 
+
 var Validator = require('validator').Validator;
 var validate = new Validator();
 
@@ -717,10 +718,6 @@ var priceValidate = [
         msg: 'Price must be between $1 and $100'
     }
 ];
-
-var validateRating = function(val){
-
-};
 
 var ratingValidate = [
     {
