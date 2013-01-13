@@ -602,7 +602,7 @@ exports.update = function(req, res){
 
 The update function executes the movieRepository.edit function: 
 
-```javascript
+```js
 exports.edit = function(movie, cb){
     mongoose.connect(config.moviesConnectionString);
 
@@ -645,6 +645,8 @@ exports.edit = function(movie, cb){
 
 };
 ```
+
+You can see the mongoose framework finds and updates the document.  The validate method on the Model is executed if if no validation issues are found then the update is successfully processed.
 
 
 
