@@ -574,12 +574,12 @@ and will render this
 
 Clicking the update button will post this form to the '/movie/edit' route.  So lets add this route to the `/routes/index.js` file
 
-```javascript
+```js
     app.post('/movie/edit', moviesRoutes.update);
 ```
 and we must add the update function to the `/routes/movie.js`
 
-```javascript
+```js
 exports.update = function(req, res){
     var updatedMovie = {
         id: req.body.id,
