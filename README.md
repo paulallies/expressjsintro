@@ -484,7 +484,33 @@ exports.edit = function(req, res){
 };
 ```
 
-As can be seen this function fetches a movie using the getMovie function from the movieRepository by passing the id of the movie to the function.  Once the movie is fetched we render the movie using the `movie/edit.hbs` view.  The code for the edit view is as follows:
+As can be seen this function fetches a movie using the getMovie function from the movieRepository by passing the id of the movie to the function.  
+
+```javascript
+exports.getMovie = function(id, cb){
+    mongoose.connect(config.moviesConnectionString);
+    Movie.findOne({ _id : id},
+        function(err, doc) {
+            mongoose.connection.close();
+            if (!err){ 
+                cb({
+                        id : doc._id,
+                        title : doc.title,
+                        releasedate : (new Date(doc.releasedate)).toDateString(),
+                        genre : doc.genre,
+                        price : doc.price,
+                        rating: doc.rating
+                });
+            }
+            else { 
+                throw err;
+            }
+        }
+    );  
+} 
+```
+
+Once the movie is fetched we render the movie using the `movie/edit.hbs` view.  The code for the edit view is as follows:
 
 ```html
 <form action="/movie/edit" method="post">    
@@ -572,6 +598,52 @@ exports.update = function(req, res){
         }
     })
 }
+```
+
+The update function executes the movieRepository.edit function: 
+
+```javascript
+exports.edit = function(movie, cb){
+    mongoose.connect(config.moviesConnectionString);
+
+    var updatedMovie = new Movie({
+        id: movie.id,
+        title: movie.title,  
+        releasedate : movie.releasedate,
+        genre : movie.genre,
+        price : movie.price,
+        rating: movie.rating
+    });
+
+    updatedMovie.validate(function(validationerr){
+        if(validationerr) {
+            mongoose.connection.close(); 
+            cb(null, validationerr);
+        }else{
+            Movie.findByIdAndUpdate(
+                movie.id, 
+                { 
+                    title: movie.title,
+                    releasedate : movie.releasedate,
+                    genre : movie.genre,
+                    price : movie.price,
+                    rating: movie.rating
+                }, 
+                function(err){
+                    mongoose.connection.close();
+                    if (!err){ 
+                        cb();
+                    }
+                    else { 
+                        cb(err)
+                    }
+                }
+            );
+        }
+    });
+
+
+};
 ```
 
 
