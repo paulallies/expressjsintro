@@ -646,7 +646,7 @@ exports.edit = function(movie, cb){
 };
 ```
 
-You can see the mongoose framework finds and updates the document.  The validate method on the Model is executed if if no validation issues are found then the update is successfully processed.
+In the code above, the movie is validated and updated.
 
 
 
