@@ -752,8 +752,6 @@ So on create and update we can call the `.validate` method on the model and it w
             <h4 style="color:red">Validation Error</h4>
            {{/validation}}
 
-           {{#movie}}<input id="id" name="id" type="hidden" value="{{title}}" />{{/movie}}
-
             <div class="editor-label">
                 <label for="title">Title</label>
             </div>
