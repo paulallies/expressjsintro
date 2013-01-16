@@ -1,18 +1,8 @@
 var config = require("../config");
 var mongoose = require("mongoose");
 
-function validator (val) {
-  return val == 'something';
-}
 
 var schema = mongoose.Schema(require("./movie")),
-// var schema = new mongoose.Schema({
-// 		title : { type: String, validate: function(val){ return false;}},
-//         releasedate : { type: Date, required: true, trim: true},
-//         genre : { type : String, trim: true, required : true},
-//         price : { type: Number, trim: true, required: true }, 
-//         rating: {type: String,  uppercase: true, enum: ['PG', 'R'], trim: true}
-//     }),
 	Movie = mongoose.model('Movie', schema);
 
 exports.getAll = function (cb) {
@@ -146,6 +136,4 @@ exports.edit = function(movie, cb){
 			);
 		}
 	});
-
-
 }

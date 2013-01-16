@@ -26,10 +26,6 @@ var priceValidate = [
 	}
 ];
 
-var validateRating = function(val){
-
-};
-
 var ratingValidate = [
 	{
     	validator: function(val){
